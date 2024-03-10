@@ -7,6 +7,9 @@ import {
   Tag,
   Settings,
   Wallet,
+  Sun,
+  Moon,
+  Laptop,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -19,4 +22,7 @@ export const Icons = {
   budgets: PiggyBank,
   categories: Tag,
   setting: Settings,
+  sun: Sun,
+  moon: Moon,
+  laptop: Laptop,
 };
