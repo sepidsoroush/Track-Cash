@@ -10,6 +10,7 @@ import {
   Sun,
   Moon,
   Laptop,
+  User,
 } from "lucide-react";
 
 export type Icon = LucideIcon;
@@ -25,4 +26,5 @@ export const Icons = {
   sun: Sun,
   moon: Moon,
   laptop: Laptop,
+  user: User,
 };

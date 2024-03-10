@@ -1,4 +1,3 @@
-import { Footer } from "@/components/layout/footer";
 import { Sidebar } from "@/components/layout/sidebar";
 
 interface DashboardLayoutProps {
@@ -16,7 +15,6 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           {children}
         </main>
       </div>
-      <Footer />
     </div>
   );
 }
