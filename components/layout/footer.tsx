@@ -22,7 +22,7 @@ export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
             </a>
             . The source code is available on{" "}
             <a
-              href="https://github.com/sepidsoroush/Track-That-Cash"
+              href="https://github.com/sepidsoroush/Track-Cash"
               target="_blank"
               rel="noreferrer"
               className="font-medium underline underline-offset-4"

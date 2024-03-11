@@ -3,11 +3,11 @@
 import * as React from "react";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
+import { SignedIn, UserButton, SignedOut, SignInButton } from "@clerk/nextjs";
 
 import { NavItem } from "@/types";
 import { cn } from "@/lib/utils";
 import { Icons } from "../icons";
-import { ProfileMenu } from "./profile-menu";
 
 const items: NavItem[] = [
   {
@@ -22,7 +22,7 @@ const items: NavItem[] = [
   },
 ];
 
-export function Navbar() {
+export async function Navbar() {
   const segment = useSelectedLayoutSegment();
 
   return (
@@ -32,7 +32,7 @@ export function Navbar() {
           <Link href="/" className="hidden items-center space-x-2 md:flex">
             <Icons.logo />
             <span className="hidden font-urban text-xl font-bold sm:inline-block">
-              Track That Cash
+              Track Cash
             </span>
           </Link>
           {items?.length ? (
@@ -52,12 +52,24 @@ export function Navbar() {
                   {item.title}
                 </Link>
               ))}
+              <SignedIn>
+                <Link
+                  href="/dashboard"
+                  className="flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm"
+                >
+                  Dashboard
+                </Link>
+              </SignedIn>
             </nav>
           ) : null}
         </div>
-
         <div className="flex items-center space-x-3">
-          <ProfileMenu />
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
         </div>
       </div>
     </header>
