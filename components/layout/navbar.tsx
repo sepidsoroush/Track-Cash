@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
 import { SignedIn, UserButton, SignedOut, SignInButton } from "@clerk/nextjs";
@@ -8,6 +8,7 @@ import { SignedIn, UserButton, SignedOut, SignInButton } from "@clerk/nextjs";
 import { NavItem } from "@/types";
 import { cn } from "@/lib/utils";
 import { Icons } from "../icons";
+import { MobileNav } from "./mobile-navbar";
 
 const items: NavItem[] = [
   {
@@ -22,8 +23,27 @@ const items: NavItem[] = [
   },
 ];
 
-export async function Navbar() {
+export function Navbar() {
   const segment = useSelectedLayoutSegment();
+  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false);
+
+  const toggleMobileMenu = () => {
+    setShowMobileMenu(!showMobileMenu);
+  };
+
+  React.useEffect(() => {
+    const closeMobileMenuOnClickOutside = (event: MouseEvent) => {
+      if (showMobileMenu) {
+        setShowMobileMenu(false);
+      }
+    };
+
+    document.addEventListener("click", closeMobileMenuOnClickOutside);
+
+    return () => {
+      document.removeEventListener("click", closeMobileMenuOnClickOutside);
+    };
+  }, [showMobileMenu]);
 
   return (
     <header className="sticky top-0 z-40 flex w-full justify-center bg-background/60 backdrop-blur-xl transition-all border-b">
@@ -62,6 +82,14 @@ export async function Navbar() {
               </SignedIn>
             </nav>
           ) : null}
+          <button
+            className="flex items-center space-x-2 md:hidden"
+            onClick={toggleMobileMenu}
+          >
+            {showMobileMenu ? <Icons.close /> : <Icons.logo />}
+            <span className="font-bold">Track Cash</span>
+          </button>
+          {showMobileMenu && items && <MobileNav items={items} />}
         </div>
         <div className="flex items-center space-x-3">
           <SignedIn>
