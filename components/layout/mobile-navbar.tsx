@@ -7,11 +7,11 @@ import { SignedIn } from "@clerk/nextjs";
 import { NavItem } from "@/types";
 import { cn } from "@/lib/utils";
 
-interface MobileNavProps {
+type Props = {
   items: NavItem[];
-}
+};
 
-export function MobileNav({ items }: MobileNavProps) {
+export function MobileNav({ items }: Props) {
   useLayoutEffect((): (() => void) => {
     const originalStyle: string = window.getComputedStyle(
       document.body
