@@ -10,8 +10,8 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
-      <div className="container grid flex-1 gap-12 md:grid-cols-[200px_1fr]">
-        <aside className="hidden w-[200px] flex-col md:flex">
+      <div className="flex flex-1">
+        <aside className="w-12 md:w-[200px] flex-col flex border-r bg-background/60 backdrop-blur-xl transition-all">
           <Sidebar />
         </aside>
         <main className="flex w-full flex-1 flex-col overflow-hidden">

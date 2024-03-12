@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -45,6 +45,17 @@ const items: NavItem[] = [
 
 export function Sidebar() {
   const path = usePathname();
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <nav className="grid items-start gap-2">
@@ -55,11 +66,16 @@ export function Sidebar() {
               className={cn(
                 "group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
                 path === item.href ? "bg-accent" : "transparent",
-                item.disabled && "cursor-not-allowed opacity-80"
+                item.disabled && "cursor-not-allowed opacity-80",
+                isSmallScreen ? "mx-1" : "mx-2"
               )}
             >
-              {item.icon && <item.icon className="mr-2 h-4 w-4" />}{" "}
-              <span>{item.title}</span>
+              {item.icon && (
+                <item.icon
+                  className={cn("h-4 w-4", isSmallScreen ? null : "mr-2")}
+                />
+              )}{" "}
+              <span>{isSmallScreen ? null : item.title}</span>
             </span>
           </Link>
         );

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
 import { SignedIn, UserButton, SignedOut, SignInButton } from "@clerk/nextjs";
@@ -31,7 +31,7 @@ export function Navbar() {
     setShowMobileMenu(!showMobileMenu);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const closeMobileMenuOnClickOutside = (event: MouseEvent) => {
       if (showMobileMenu) {
         setShowMobileMenu(false);
@@ -89,7 +89,7 @@ export function Navbar() {
             {showMobileMenu ? <Icons.close /> : <Icons.logo />}
             <span className="font-bold">Track Cash</span>
           </button>
-          {showMobileMenu && items && <MobileNav items={items} />}
+          {showMobileMenu && <MobileNav items={items} />}
         </div>
         <div className="flex items-center space-x-3">
           <SignedIn>
