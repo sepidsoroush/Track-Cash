@@ -8,33 +8,35 @@ export interface NavItem {
 }
 
 export interface BankTransaction {
-  "Customer account no": string;
-  "Document no"?: string;
+  "Customer account no"?: string;
   Date: string;
-  "Sender/receiver account": string;
-  "Sender/receiver name": string;
-  "Sender bank code": number;
+  "Sender/receiver account"?: string;
+  "Sender/receiver"?: string;
+  "Sender bank code"?: number;
   "Debit/Credit (D/C)": string;
   Amount: number;
-  "Reference number": string;
-  "Archiving code": string;
-  Description: string;
-  Fee: number;
-  Currency: string;
-  "Personal code or register code": number;
-  "Sender/receiver bank BIC": string;
-  "Transaction reference": number;
-  "Account servicer reference": string;
+  "Reference number"?: string | number;
+  Description?: string | number;
+  Fee?: number;
+  Currency?: string;
+  "Transaction reference"?: number;
+  "Document no"?: string | number;
+  "Archiving code"?: string | number;
+  "Personal code or register code"?: string | number;
+  "Sender/receiver bank BIC"?: string;
+  "Account servicer reference"?: string;
   Category: string;
-  "Source of income": string;
+  "Source of income"?: string;
 }
 
 export interface NormalizedTransaction {
-  accountNo: string;
-  date: string;
+  accountNo?: string;
+  year: string;
+  month: string;
   label?: string;
+  type: string;
   amount: number;
-  description?: string;
+  description?: string | number;
   category: string;
   incomeSource?: string;
 }

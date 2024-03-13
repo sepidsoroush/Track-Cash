@@ -6,18 +6,18 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function normalizeTransaction() {}
-
-export const normalizeUser = (transaction: BankTransaction | null) => {
-  return !transaction
-    ? null
-    : ({
-        accountNo: transaction["Customer account no"],
-        date: transaction.Date,
-        label: transaction["Sender/receiver name"],
-        amount: transaction.Amount,
-        description: transaction.Description,
-        category: transaction.Category,
-        incomeSource: transaction["Source of income"],
-      } satisfies NormalizedTransaction);
+export const normalizeTransactions = (
+  transactions: BankTransaction[]
+): NormalizedTransaction[] => {
+  return transactions.map((transaction) => ({
+    accountNo: transaction["Customer account no"],
+    year: transaction.Date.substring(0, 4),
+    month: transaction.Date.substring(5, 7),
+    label: transaction["Sender/receiver"],
+    type: transaction["Debit/Credit (D/C)"],
+    amount: transaction.Amount,
+    description: transaction.Description,
+    category: transaction.Category,
+    incomeSource: transaction["Source of income"],
+  }));
 };
