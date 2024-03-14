@@ -7,22 +7,34 @@ export const metadata: Metadata = {
 
 import data from "@/assets/data.json";
 import {
-  monthlyExpensePerCategory,
-  annuallyExpensePerCategory,
-  totalAnnuallyExpense,
-  monthlyIncomePerSource,
-  annuallyIncomePerSource,
-  totalAnnuallyIncome,
+  // monthlyExpensePerCategory,
+  // annuallyExpensePerCategory,
+  // totalAnnuallyExpense,
+  // monthlyIncomePerSource,
+  // annuallyIncomePerSource,
+  // totalAnnuallyIncome,
+  expensesPerCategoryAllMonths,
 } from "@/lib/stats";
 import { normalizeTransactions } from "@/lib/utils";
+import { CardsStats } from "@/components/stats/card-stats";
 
 export default function DashboardPage() {
   const normalizedData = normalizeTransactions(data);
 
+  const expensesPerCategory = expensesPerCategoryAllMonths(
+    normalizedData,
+    "2023",
+    "Subscriptions"
+  );
+
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between text-4xl">
+    <div className="flex min-h-screen flex-col items-center justify-start text-4xl">
       Dashboard page
-      <p>
+      <CardsStats
+        data={expensesPerCategory}
+        title="Expenses Per Category All Months"
+      />
+      {/* <p>
         monthlyExpensePerCategory:{" "}
         {monthlyExpensePerCategory(
           normalizedData,
@@ -47,7 +59,7 @@ export default function DashboardPage() {
         annuallyIncomePerSource:{" "}
         {annuallyIncomePerSource(normalizedData, "2023", "Freelance")}
       </p>
-      <p>totalAnnuallyIncome: {totalAnnuallyIncome(normalizedData, "2023")}</p>
+      <p>totalAnnuallyIncome: {totalAnnuallyIncome(normalizedData, "2023")}</p> */}
     </div>
   );
 }

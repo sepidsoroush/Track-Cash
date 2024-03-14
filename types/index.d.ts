@@ -40,3 +40,13 @@ export interface NormalizedTransaction {
   category: string;
   incomeSource?: string;
 }
+
+export interface Month {
+  label: string;
+  index: string;
+}
+
+export interface Stats {
+  month: string;
+  amount: string;
+}
