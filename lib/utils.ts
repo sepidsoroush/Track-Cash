@@ -36,3 +36,30 @@ export const months = [
   { label: "Nov", value: "11" },
   { label: "Dec", value: "12" },
 ];
+
+function generateYearsArray() {
+  const yearsArray = [];
+  for (let year = 2020; year <= 2030; year++) {
+    yearsArray.push(year.toString());
+  }
+  return yearsArray;
+}
+
+export const years = generateYearsArray();
+
+export const categories = [
+  { label: "Income" },
+  { label: "Transportation" },
+  { label: "Bills" },
+  { label: "Subscriptions" },
+  { label: "Education" },
+  { label: "Groceries" },
+  { label: "Restaurants" },
+  { label: "Health & Fitness" },
+  { label: "Personal Care" },
+  { label: "Travel" },
+  { label: "Bank Transfer" },
+  { label: "Business expenses" },
+  { label: "Investments" },
+  { label: "Miscellaneous" },
+];
