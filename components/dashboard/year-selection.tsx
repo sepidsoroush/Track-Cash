@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useFilterContext } from "@/context/FilterContext";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -14,9 +14,7 @@ import {
 import { years } from "@/lib/utils";
 
 export function YearSelection() {
-  const currentDate = new Date();
-  const currentYearLabel = years[currentDate.getMonth()];
-  const [selectedYear, setSelectedYear] = useState<string>(currentYearLabel);
+  const { year: selectedYear, updateYear } = useFilterContext();
 
   return (
     <DropdownMenu>
@@ -33,7 +31,7 @@ export function YearSelection() {
       <DropdownMenuContent align="end">
         {years.map((item) => {
           return (
-            <DropdownMenuItem key={item} onClick={() => setSelectedYear(item)}>
+            <DropdownMenuItem key={item} onClick={() => updateYear(item)}>
               {item}
             </DropdownMenuItem>
           );

@@ -33,11 +33,11 @@ export default function DashboardPage() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-start text-4xl">
-      <nav className="flex flex-row items-start justify-start p-4 gap-4 w-full">
+      <nav className="flex flex-row items-start justify-start p-4 mb-2 gap-4 w-full border-b bg-background/60 backdrop-blur-xl">
+        <ReportSelection />
         <YearSelection />
         <MonthSelection />
         <CategorySelection />
-        <ReportSelection />
       </nav>
       <CardsStats
         data={expensesPerCategory}

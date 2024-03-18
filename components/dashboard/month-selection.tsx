@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useFilterContext } from "@/context/FilterContext";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -14,9 +14,7 @@ import {
 import { months } from "@/lib/utils";
 
 export function MonthSelection() {
-  const currentDate = new Date();
-  const currentMonthLabel = months[currentDate.getMonth()].label;
-  const [selectedMonth, setSelectedMonth] = useState<string>(currentMonthLabel);
+  const { month: selectedMonth, updateMonth } = useFilterContext();
 
   return (
     <DropdownMenu>
@@ -35,7 +33,7 @@ export function MonthSelection() {
           return (
             <DropdownMenuItem
               key={item.label}
-              onClick={() => setSelectedMonth(item.label)}
+              onClick={() => updateMonth(item.label)}
             >
               {item.label}
             </DropdownMenuItem>

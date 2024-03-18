@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useFilterContext } from "@/context/FilterContext";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -14,7 +14,7 @@ import {
 import { categories } from "@/lib/utils";
 
 export function CategorySelection() {
-  const [selectedCategory, setSelectedCategory] = useState<string>("Income");
+  const { category: selectedCategory, updateCategory } = useFilterContext();
 
   return (
     <DropdownMenu>
@@ -33,7 +33,7 @@ export function CategorySelection() {
           return (
             <DropdownMenuItem
               key={item.label}
-              onClick={() => setSelectedCategory(item.label)}
+              onClick={() => updateCategory(item.label)}
             >
               {item.label}
             </DropdownMenuItem>
