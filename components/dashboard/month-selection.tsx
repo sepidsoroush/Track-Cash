@@ -24,22 +24,19 @@ export function MonthSelection() {
         <Button variant="ghost" size="sm" className="h-8 px-4">
           <div className="flex items-center space-x-2">
             <Label htmlFor="month">Select month:</Label>
-            {selectedMonth ? (
-              <Badge variant="default" id="month">
-                {selectedMonth}
-              </Badge>
-            ) : (
-              <Badge variant="default" id="month">
-                {selectedMonth}
-              </Badge>
-            )}
+            <Badge variant="default" id="month">
+              {selectedMonth}
+            </Badge>
           </div>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         {months.map((item) => {
           return (
-            <DropdownMenuItem onClick={() => setSelectedMonth(item.label)}>
+            <DropdownMenuItem
+              key={item.label}
+              onClick={() => setSelectedMonth(item.label)}
+            >
               {item.label}
             </DropdownMenuItem>
           );

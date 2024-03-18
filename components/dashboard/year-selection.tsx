@@ -24,22 +24,16 @@ export function YearSelection() {
         <Button variant="ghost" size="sm" className="h-8 px-4">
           <div className="flex items-center space-x-2">
             <Label htmlFor="year">Select year:</Label>
-            {selectedYear ? (
-              <Badge variant="default" id="year">
-                {selectedYear}
-              </Badge>
-            ) : (
-              <Badge variant="default" id="year">
-                {selectedYear}
-              </Badge>
-            )}
+            <Badge variant="default" id="year">
+              {selectedYear}
+            </Badge>
           </div>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         {years.map((item) => {
           return (
-            <DropdownMenuItem onClick={() => setSelectedYear(item)}>
+            <DropdownMenuItem key={item} onClick={() => setSelectedYear(item)}>
               {item}
             </DropdownMenuItem>
           );

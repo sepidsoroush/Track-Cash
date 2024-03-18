@@ -63,3 +63,9 @@ export const categories = [
   { label: "Investments" },
   { label: "Miscellaneous" },
 ];
+
+export const reports = [
+  { label: "Monthly" },
+  { label: "Annualy" },
+  { label: "Total" },
+];

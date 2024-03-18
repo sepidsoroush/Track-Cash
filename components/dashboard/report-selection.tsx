@@ -1,23 +1,31 @@
 "use client";
+import { useState } from "react";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { Label } from "@/components/ui/label";
 
-export function ReportSelection() {
-  return (
-    <Tabs defaultValue="monthly" id="report">
-      <Label htmlFor="report" className="mr-4 px-4">
-        Select report type:
-      </Label>
+import { reports } from "@/lib/utils";
 
-      <TabsList>
-        <TabsTrigger value="monthly">Monthly</TabsTrigger>
-        <TabsTrigger value="annually">Annually</TabsTrigger>
-        <TabsTrigger value="total">Total</TabsTrigger>
-      </TabsList>
-      <TabsContent value="monthly">Put monthly report here.</TabsContent>
-      <TabsContent value="annually">Put annually report here.</TabsContent>
-      <TabsContent value="total">Put total report here.</TabsContent>
-    </Tabs>
+export function ReportSelection() {
+  const [selectedReport, setSelectedReport] = useState<string>("Monthly");
+
+  return (
+    <Button variant="ghost" size="sm" className="h-8 px-4">
+      <div className="flex items-center space-x-2">
+        <Label htmlFor="category">Select category:</Label>
+        {reports.map((item) => {
+          return (
+            <Badge
+              variant={selectedReport === item.label ? "default" : "outline"}
+              onClick={() => setSelectedReport(item.label)}
+              key={item.label}
+            >
+              {item.label}
+            </Badge>
+          );
+        })}
+      </div>
+    </Button>
   );
 }
