@@ -17,6 +17,10 @@ import {
 } from "@/lib/stats";
 import { normalizeTransactions } from "@/lib/utils";
 import { CardsStats } from "@/components/stats/card-stats";
+import { ReportSelection } from "@/components/dashboard/report-selection";
+import { YearSelection } from "@/components/dashboard/year-selection";
+import { MonthSelection } from "@/components/dashboard/month-selection";
+import { CategorySelection } from "@/components/dashboard/category-selection";
 
 export default function DashboardPage() {
   const normalizedData = normalizeTransactions(data);
@@ -29,7 +33,12 @@ export default function DashboardPage() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-start text-4xl">
-      Dashboard page
+      <nav className="flex flex-row items-start justify-start p-4 gap-4 w-full">
+        <YearSelection />
+        <MonthSelection />
+        <CategorySelection />
+        <ReportSelection />
+      </nav>
       <CardsStats
         data={expensesPerCategory}
         title="Expenses Per Category All Months"
