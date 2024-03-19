@@ -47,6 +47,6 @@ export interface Month {
 }
 
 export interface Stats {
-  month: string;
-  amount: string;
+  name: string;
+  value: number;
 }

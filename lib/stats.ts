@@ -18,6 +18,12 @@ export const monthlyExpensePerCategory = (
       )
       .reduce((sum, item) => sum + item.amount, 0)
   );
+  // Formatting the total amount
+  // const formattedAmount = totalAmount.toFixed(2);
+
+  // // Returning the formatted amount as a number
+  // return Number(formattedAmount);
+  // return totalAmount
 };
 
 export const annuallyExpensePerCategory = (
@@ -89,13 +95,13 @@ export const expensesPerCategoryAllMonths = (
   const stats: Stats[] = [];
 
   months.forEach((monthObj) => {
-    const amount = monthlyExpensePerCategory(
+    const value = monthlyExpensePerCategory(
       data,
       year,
       monthObj.value,
       category
-    ).toFixed(2);
-    stats.push({ month: monthObj.label, amount });
+    );
+    stats.push({ name: monthObj.label, value });
   });
 
   return stats;
