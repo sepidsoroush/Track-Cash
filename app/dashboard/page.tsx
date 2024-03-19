@@ -6,15 +6,7 @@ export const metadata: Metadata = {
 };
 
 import data from "@/assets/data.json";
-import {
-  // monthlyExpensePerCategory,
-  // annuallyExpensePerCategory,
-  // totalAnnuallyExpense,
-  // monthlyIncomePerSource,
-  // annuallyIncomePerSource,
-  // totalAnnuallyIncome,
-  expensesPerCategoryAllMonths,
-} from "@/lib/stats";
+import { expensesPerCategoryAllMonths } from "@/lib/stats";
 import { normalizeTransactions } from "@/lib/utils";
 import { CardsStats } from "@/components/stats/card-stats";
 import { ReportSelection } from "@/components/dashboard/report-selection";
@@ -75,33 +67,6 @@ export default function DashboardPage() {
           </div>
         </CardsStats>
       </div>
-
-      {/* <p>
-        monthlyExpensePerCategory:{" "}
-        {monthlyExpensePerCategory(
-          normalizedData,
-          "2023",
-          "12",
-          "Subscriptions"
-        )}
-      </p>
-      <p>
-        annuallyExpensePerCategory:{" "}
-        {annuallyExpensePerCategory(normalizedData, "2023", "Subscriptions")}
-      </p>
-      <p>
-        totalAnnuallyExpense: {totalAnnuallyExpense(normalizedData, "2023")}
-      </p>
-      <hr />
-      <p>
-        monthlyIncomePerSource:{" "}
-        {monthlyIncomePerSource(normalizedData, "2023", "12", "Freelance")}
-      </p>
-      <p>
-        annuallyIncomePerSource:{" "}
-        {annuallyIncomePerSource(normalizedData, "2023", "Freelance")}
-      </p>
-      <p>totalAnnuallyIncome: {totalAnnuallyIncome(normalizedData, "2023")}</p> */}
     </div>
   );
 }

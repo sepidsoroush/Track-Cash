@@ -18,12 +18,6 @@ export const monthlyExpensePerCategory = (
       )
       .reduce((sum, item) => sum + item.amount, 0)
   );
-  // Formatting the total amount
-  // const formattedAmount = totalAmount.toFixed(2);
-
-  // // Returning the formatted amount as a number
-  // return Number(formattedAmount);
-  // return totalAmount
 };
 
 export const annuallyExpensePerCategory = (

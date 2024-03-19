@@ -1,11 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { SimpleLineChart } from "../charts/simple-line-chart";
-import { SimpleBarChart } from "../charts/simple-bar-chart";
-import { Stats } from "@/types";
 
 type Props = {
   title: string;
-  children: any;
+  children: React.ReactNode;
 };
 
 export function CardsStats({ children, title }: Props) {
@@ -16,15 +13,7 @@ export function CardsStats({ children, title }: Props) {
           {title}
         </CardTitle>
       </CardHeader>
-      <CardContent className="flex flex-row">
-        {children}
-        {/* <div className="h-[300px] w-[500px]">
-          <SimpleLineChart data={data} />
-        </div>
-        <div className="h-[300px] w-[500px]">
-          <SimpleBarChart data={data} />
-        </div> */}
-      </CardContent>
+      <CardContent className="flex flex-row">{children}</CardContent>
     </Card>
   );
 }
