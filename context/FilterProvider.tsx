@@ -17,7 +17,6 @@ const FilterProvider: React.FC<FilterProviderProps> = ({ children }) => {
   const [category, setCategory] = useState<string>("Income");
   const [year, setYear] = useState<string>(currentYearLabel);
   const [month, setMonth] = useState<string>(currentMonthLabel);
-  const [reportType, setReportType] = useState<string>("Monthly");
 
   const updateCategory = (newCategories: string) => {
     setCategory(newCategories);
@@ -31,21 +30,15 @@ const FilterProvider: React.FC<FilterProviderProps> = ({ children }) => {
     setMonth(newMonth);
   };
 
-  const updateReportType = (newReportType: string) => {
-    setReportType(newReportType);
-  };
-
   return (
     <FilterContext.Provider
       value={{
         category,
         year,
         month,
-        reportType,
         updateCategory,
         updateYear,
         updateMonth,
-        updateReportType,
       }}
     >
       {children}

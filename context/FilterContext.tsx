@@ -4,11 +4,9 @@ interface FilterContextProps {
   category: string;
   year: string;
   month: string;
-  reportType: string;
   updateCategory: (categories: string) => void;
   updateYear: (year: string) => void;
   updateMonth: (month: string) => void;
-  updateReportType: (reportType: string) => void;
 }
 
 const FilterContext = createContext<FilterContextProps | undefined>(undefined);
