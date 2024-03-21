@@ -2,7 +2,7 @@ import { useFilterContext } from "@/context/FilterContext";
 
 import {
   getAnnuallyExpensesByCategory,
-  annuallySourceOfIncome,
+  getAnnuallySourceOfIncome,
 } from "@/lib/stats";
 import { normalizeTransactions } from "@/lib/utils";
 
@@ -17,14 +17,17 @@ export default function YearlyReports() {
 
   const normalizedData = normalizeTransactions(data);
 
-  const sourcesOfIncome = annuallySourceOfIncome(normalizedData, selectedYear);
+  const sourcesOfIncome = getAnnuallySourceOfIncome(
+    normalizedData,
+    selectedYear
+  );
 
   const expenses = getAnnuallyExpensesByCategory(normalizedData, selectedYear);
 
   return (
     <div className="flex flex-row px-4 gap-4">
       <CardsStats title={`Source of income in ${selectedYear}`}>
-        <div className="h-[300px] w-[300px]">
+        <div className="h-[300px] w-[350px]">
           <SimplePieChart data={sourcesOfIncome} type="pie" />
         </div>
       </CardsStats>

@@ -23,39 +23,6 @@ const monthlyExpenseAmount = (
   return Math.abs(roundedAmount);
 };
 
-const annuallyExpenseAmount = (
-  data: NormalizedTransaction[],
-  year: string,
-  category: string
-): number => {
-  const totalAmount = data
-    .filter(
-      (item) =>
-        (item.type === "D" ||
-          (item.type === "C" && item.category !== "Income")) &&
-        item.year === year &&
-        item.category === category
-    )
-    .reduce((sum, item) => sum + item.amount, 0);
-  const roundedAmount = Math.round(totalAmount * 10) / 10;
-
-  return Math.abs(roundedAmount);
-};
-
-const totalAnnuallyExpense = (
-  data: NormalizedTransaction[],
-  year: string
-): number => {
-  return data
-    .filter(
-      (item) =>
-        (item.type === "D" ||
-          (item.type === "C" && item.category !== "Income")) &&
-        item.year === year
-    )
-    .reduce((sum, item) => sum + item.amount, 0);
-};
-
 const monthlyIncomePerSource = (
   data: NormalizedTransaction[],
   year: string,
@@ -74,36 +41,8 @@ const monthlyIncomePerSource = (
     .reduce((sum, item) => sum + item.amount, 0);
 };
 
-const annuallyIncomePerSource = (
-  data: NormalizedTransaction[],
-  year: string,
-  source: string
-): number => {
-  return data
-    .filter(
-      (item) =>
-        item.type === "C" &&
-        item.category === "Income" &&
-        item.year === year &&
-        item.incomeSource === source
-    )
-    .reduce((sum, item) => sum + item.amount, 0);
-};
-
-const totalAnnuallyIncome = (
-  data: NormalizedTransaction[],
-  year: string
-): number => {
-  return data
-    .filter(
-      (item) =>
-        item.type === "C" && item.category === "Income" && item.year === year
-    )
-    .reduce((sum, item) => sum + item.amount, 0);
-};
-
-// charts functions
-export const expensesPerCategoryAllMonths = (
+// Monthly trend of CategoryExpenses charts functions
+export const getCategoryExpensesPerMonth = (
   data: NormalizedTransaction[],
   year: string,
   category: string
@@ -119,7 +58,7 @@ export const expensesPerCategoryAllMonths = (
 };
 
 // SourceOfIncome charts functions
-export const monthlySourceOfIncome = (
+export const getMonthlySourceOfIncome = (
   data: NormalizedTransaction[],
   year: string,
   month: string
@@ -134,15 +73,24 @@ export const monthlySourceOfIncome = (
   return stats;
 };
 
-export const annuallySourceOfIncome = (
+export const getAnnuallySourceOfIncome = (
   data: NormalizedTransaction[],
   year: string
 ): Stats[] => {
   const stats: Stats[] = [];
 
   incomeSources.forEach((item) => {
-    const value = annuallyIncomePerSource(data, year, item.label);
-    stats.push({ name: item.label, value });
+    let totalMonthlyIncome = 0;
+    // Calculate monthly income for each source and sum them up
+    for (let month = 1; month <= 12; month++) {
+      totalMonthlyIncome += monthlyIncomePerSource(
+        data,
+        year,
+        month.toString(),
+        item.label
+      );
+    }
+    stats.push({ name: item.label, value: totalMonthlyIncome });
   });
 
   return stats;
@@ -171,11 +119,17 @@ export const getAnnuallyExpensesByCategory = (
   const stats: Stats[] = [];
 
   categories.forEach((item) => {
-    const value = annuallyExpenseAmount(data, year, item.label);
-    stats.push({ name: item.label, value });
+    let totalMonthlyExpense = 0;
+    for (let month = 1; month <= 12; month++) {
+      totalMonthlyExpense += monthlyExpenseAmount(
+        data,
+        year,
+        month.toString(),
+        item.label
+      );
+    }
+    stats.push({ name: item.label, value: totalMonthlyExpense });
   });
 
   return stats;
 };
-
-const getCategoryExpensesPerMonth = () => {};

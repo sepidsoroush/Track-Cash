@@ -4,7 +4,7 @@ import { useFilterContext } from "@/context/FilterContext";
 
 import {
   getMonthlyExpensesByCategory,
-  monthlySourceOfIncome,
+  getMonthlySourceOfIncome,
 } from "@/lib/stats";
 import { normalizeTransactions } from "@/lib/utils";
 
@@ -19,7 +19,7 @@ export default function MonthlyReports() {
 
   const normalizedData = normalizeTransactions(data);
 
-  const sourcesOfIncome = monthlySourceOfIncome(
+  const sourcesOfIncome = getMonthlySourceOfIncome(
     normalizedData,
     selectedYear,
     selectedMonth.value
@@ -36,10 +36,7 @@ export default function MonthlyReports() {
       <CardsStats
         title={`Source of income in ${selectedMonth.title} ${selectedYear}`}
       >
-        {/* <div className="h-[300px] w-[500px]">
-          <SimpleLineChart data={expensesPerCategory} />
-        </div> */}
-        <div className="h-[300px] w-[300px]">
+        <div className="h-[300px] w-[350px]">
           <SimplePieChart data={sourcesOfIncome} type="pie" />
         </div>
       </CardsStats>
