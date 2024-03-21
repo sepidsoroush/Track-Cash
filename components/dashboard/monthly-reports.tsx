@@ -3,14 +3,13 @@
 import { useFilterContext } from "@/context/FilterContext";
 
 import {
-  // expensesPerCategoryAllMonths,
+  getMonthlyExpensesByCategory,
   monthlySourceOfIncome,
 } from "@/lib/stats";
 import { normalizeTransactions } from "@/lib/utils";
 
 import { CardsStats } from "@/components/layout/card-stats";
-// import { SimpleLineChart } from "@/components/charts/simple-line-chart";
-// import { SimpleBarChart } from "../charts/simple-bar-chart";
+import { SimpleBarChart } from "../charts/simple-bar-chart";
 import { SimplePieChart } from "../charts/simple-pie-chart";
 
 import data from "@/assets/data.json";
@@ -20,13 +19,13 @@ export default function MonthlyReports() {
 
   const normalizedData = normalizeTransactions(data);
 
-  // const expensesPerCategory = expensesPerCategoryAllMonths(
-  //   normalizedData,
-  //   selectedYear,
-  //   selectedCategory
-  // );
-
   const sourcesOfIncome = monthlySourceOfIncome(
+    normalizedData,
+    selectedYear,
+    selectedMonth.value
+  );
+
+  const expenses = getMonthlyExpensesByCategory(
     normalizedData,
     selectedYear,
     selectedMonth.value
@@ -44,11 +43,13 @@ export default function MonthlyReports() {
           <SimplePieChart data={sourcesOfIncome} type="pie" />
         </div>
       </CardsStats>
-      {/* <CardsStats title="Expenses Per Category All Months">
-        <div className="h-[300px] w-[500px]">
-          <SimpleBarChart data={expensesPerCategory} />
+      <CardsStats
+        title={`Monthly Expenses By Category in ${selectedMonth.title} ${selectedYear}`}
+      >
+        <div className="h-[300px] w-[600px]">
+          <SimpleBarChart data={expenses} />
         </div>
-      </CardsStats> */}
+      </CardsStats>
     </div>
   );
 }

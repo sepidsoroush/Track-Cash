@@ -33,13 +33,20 @@ export function SimpleBarChart({ data }: Props) {
           bottom: 5,
         }}
         style={{ fontSize: 14 }}
+        {...{
+          overflow: "visible",
+        }}
       >
         <CartesianGrid strokeDasharray="3 3" opacity={0.5} />
         <XAxis
           dataKey="name"
           stroke="#888888"
-          tickLine={false}
+          tickLine={true}
           axisLine={false}
+          fontSize={10}
+          angle={-45}
+          textAnchor="end"
+          height={60}
         />
         <YAxis
           stroke="#888888"
@@ -64,6 +71,7 @@ export function SimpleBarChart({ data }: Props) {
           dataKey="value"
           stroke="#f2f2f2"
           activeBar={<Rectangle fill="currentColor" stroke="currentColor" />}
+          // label={{ fontSize: 10, position: "top" }}
         />
       </BarChart>
     </ResponsiveContainer>
