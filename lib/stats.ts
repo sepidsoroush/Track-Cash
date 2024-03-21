@@ -42,7 +42,7 @@ const monthlyIncomePerSource = (
 };
 
 // Monthly trend of CategoryExpenses charts functions
-export const getCategoryExpensesPerMonth = (
+export const getCategoryExpensesTrend = (
   data: NormalizedTransaction[],
   year: string,
   category: string
