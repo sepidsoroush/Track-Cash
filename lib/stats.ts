@@ -1,7 +1,7 @@
 import { NormalizedTransaction, Stats } from "@/types";
-import { months } from "./utils";
+import { months, incomeSources } from "./utils";
 
-export const monthlyExpensePerCategory = (
+const monthlyExpensePerCategory = (
   data: NormalizedTransaction[],
   year: string,
   month: string,
@@ -11,7 +11,8 @@ export const monthlyExpensePerCategory = (
     data
       .filter(
         (item) =>
-          item.type === "D" &&
+          (item.type === "D" ||
+            (item.type === "C" && item.category !== "Income")) &&
           item.year === year &&
           item.month === month &&
           item.category === category
@@ -20,7 +21,7 @@ export const monthlyExpensePerCategory = (
   );
 };
 
-export const annuallyExpensePerCategory = (
+const annuallyExpensePerCategory = (
   data: NormalizedTransaction[],
   year: string,
   category: string
@@ -28,21 +29,29 @@ export const annuallyExpensePerCategory = (
   return data
     .filter(
       (item) =>
-        item.type === "D" && item.year === year && item.category === category
+        (item.type === "D" ||
+          (item.type === "C" && item.category !== "Income")) &&
+        item.year === year &&
+        item.category === category
     )
     .reduce((sum, item) => sum + item.amount, 0);
 };
 
-export const totalAnnuallyExpense = (
+const totalAnnuallyExpense = (
   data: NormalizedTransaction[],
   year: string
 ): number => {
   return data
-    .filter((item) => item.type === "D" && item.year === year)
+    .filter(
+      (item) =>
+        (item.type === "D" ||
+          (item.type === "C" && item.category !== "Income")) &&
+        item.year === year
+    )
     .reduce((sum, item) => sum + item.amount, 0);
 };
 
-export const monthlyIncomePerSource = (
+const monthlyIncomePerSource = (
   data: NormalizedTransaction[],
   year: string,
   month: string,
@@ -52,6 +61,7 @@ export const monthlyIncomePerSource = (
     .filter(
       (item) =>
         item.type === "C" &&
+        item.category === "Income" &&
         item.year === year &&
         item.month === month &&
         item.incomeSource === source
@@ -59,7 +69,7 @@ export const monthlyIncomePerSource = (
     .reduce((sum, item) => sum + item.amount, 0);
 };
 
-export const annuallyIncomePerSource = (
+const annuallyIncomePerSource = (
   data: NormalizedTransaction[],
   year: string,
   source: string
@@ -67,20 +77,27 @@ export const annuallyIncomePerSource = (
   return data
     .filter(
       (item) =>
-        item.type === "C" && item.year === year && item.incomeSource === source
+        item.type === "C" &&
+        item.category === "Income" &&
+        item.year === year &&
+        item.incomeSource === source
     )
     .reduce((sum, item) => sum + item.amount, 0);
 };
 
-export const totalAnnuallyIncome = (
+const totalAnnuallyIncome = (
   data: NormalizedTransaction[],
   year: string
 ): number => {
   return data
-    .filter((item) => item.type === "C" && item.year === year)
+    .filter(
+      (item) =>
+        item.type === "C" && item.category === "Income" && item.year === year
+    )
     .reduce((sum, item) => sum + item.amount, 0);
 };
 
+// charts functions
 export const expensesPerCategoryAllMonths = (
   data: NormalizedTransaction[],
   year: string,
@@ -96,6 +113,35 @@ export const expensesPerCategoryAllMonths = (
       category
     );
     stats.push({ name: monthObj.label, value });
+  });
+
+  return stats;
+};
+
+export const monthlySourceOfIncome = (
+  data: NormalizedTransaction[],
+  year: string,
+  month: string
+): Stats[] => {
+  const stats: Stats[] = [];
+
+  incomeSources.forEach((item) => {
+    const value = monthlyIncomePerSource(data, year, month, item.label);
+    stats.push({ name: item.label, value });
+  });
+
+  return stats;
+};
+
+export const annuallySourceOfIncome = (
+  data: NormalizedTransaction[],
+  year: string
+): Stats[] => {
+  const stats: Stats[] = [];
+
+  incomeSources.forEach((item) => {
+    const value = annuallyIncomePerSource(data, year, item.label);
+    stats.push({ name: item.label, value });
   });
 
   return stats;

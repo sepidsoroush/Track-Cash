@@ -1,12 +1,13 @@
 import { createContext, useContext } from "react";
+import { Month } from "@/types";
 
 interface FilterContextProps {
   category: string;
   year: string;
-  month: string;
+  month: Month;
   updateCategory: (categories: string) => void;
   updateYear: (year: string) => void;
-  updateMonth: (month: string) => void;
+  updateMonth: (month: Month) => void;
 }
 
 const FilterContext = createContext<FilterContextProps | undefined>(undefined);

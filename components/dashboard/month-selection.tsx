@@ -23,7 +23,7 @@ export function MonthSelection() {
           <div className="flex items-center space-x-2">
             <Label htmlFor="month">Select month:</Label>
             <Badge variant="default" id="month">
-              {selectedMonth}
+              {selectedMonth.label}
             </Badge>
           </div>
         </Button>
@@ -32,8 +32,8 @@ export function MonthSelection() {
         {months.map((item) => {
           return (
             <DropdownMenuItem
-              key={item.label}
-              onClick={() => updateMonth(item.label)}
+              key={item.value}
+              onClick={() => updateMonth(item)}
             >
               {item.label}
             </DropdownMenuItem>

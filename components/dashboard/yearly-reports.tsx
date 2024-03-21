@@ -1,29 +1,32 @@
-import { CardsStats } from "@/components/stats/card-stats";
+import { useFilterContext } from "@/context/FilterContext";
 
+import { annuallySourceOfIncome } from "@/lib/stats";
+import { normalizeTransactions } from "@/lib/utils";
+
+import { CardsStats } from "@/components/layout/card-stats";
 import { SimplePieChart } from "@/components/charts/simple-pie-chart";
 
-import { Stats } from "@/types";
-
-const data01: Stats[] = [
-  { name: "Group A", value: 400 },
-  { name: "Group B", value: 300 },
-  { name: "Group C", value: 300 },
-  { name: "Group D", value: 200 },
-];
+import data from "@/assets/data.json";
 
 export default function YearlyReports() {
+  const { year: selectedYear } = useFilterContext();
+
+  const normalizedData = normalizeTransactions(data);
+
+  const sourcesOfIncome = annuallySourceOfIncome(normalizedData, selectedYear);
+
   return (
     <div className="flex flex-row px-4 gap-4">
-      <CardsStats title="Expenses Per Category All Months">
-        <div className="h-[300px] w-[500px]">
-          <SimplePieChart data={data01} type="pie" />
+      <CardsStats title={`Source of income in ${selectedYear}`}>
+        <div className="h-[300px] w-[300px]">
+          <SimplePieChart data={sourcesOfIncome} type="pie" />
         </div>
       </CardsStats>
-      <CardsStats title="Expenses Per Category All Months">
+      {/* <CardsStats title="Expenses Per Category All Months">
         <div className="h-[300px] w-[500px]">
           <SimplePieChart data={data01} type="doughnut" />
         </div>
-      </CardsStats>
+      </CardsStats> */}
     </div>
   );
 }

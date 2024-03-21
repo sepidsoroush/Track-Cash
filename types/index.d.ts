@@ -42,8 +42,9 @@ export interface NormalizedTransaction {
 }
 
 export interface Month {
+  value: string;
   label: string;
-  index: string;
+  title: string;
 }
 
 export interface Stats {
