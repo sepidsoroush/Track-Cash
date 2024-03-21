@@ -133,3 +133,107 @@ export const getAnnuallyExpensesByCategory = (
 
   return stats;
 };
+
+// Saving, Expense, Income charts:
+
+export const totalMonthlyIncome = (
+  data: NormalizedTransaction[],
+  year: string,
+  month: string
+): number => {
+  const totalAmount = data
+    .filter(
+      (item) =>
+        item.type === "C" &&
+        item.category === "Income" &&
+        item.year === year &&
+        item.month === month
+    )
+    .reduce((sum, item) => sum + item.amount, 0);
+
+  const roundedAmount = Math.round(totalAmount * 10) / 10;
+
+  return Math.abs(roundedAmount);
+};
+
+export const totalAnnuallyIncome = (
+  data: NormalizedTransaction[],
+  year: string
+): number => {
+  const totalAmount = data
+    .filter(
+      (item) =>
+        item.type === "C" && item.category === "Income" && item.year === year
+    )
+    .reduce((sum, item) => sum + item.amount, 0);
+  const roundedAmount = Math.round(totalAmount * 10) / 10;
+
+  return Math.abs(roundedAmount);
+};
+
+export const totalMonthlyExpense = (
+  data: NormalizedTransaction[],
+  year: string,
+  month: string
+): number => {
+  const totalAmount = data
+    .filter(
+      (item) =>
+        (item.type === "D" ||
+          (item.type === "C" && item.category !== "Income")) &&
+        item.year === year &&
+        item.month === month
+    )
+    .reduce((sum, item) => sum + item.amount, 0);
+  const roundedAmount = Math.round(totalAmount * 10) / 10;
+
+  return Math.abs(roundedAmount);
+};
+
+export const totalAnnuallyExpense = (
+  data: NormalizedTransaction[],
+  year: string
+): number => {
+  const totalAmount = data
+    .filter(
+      (item) =>
+        (item.type === "D" ||
+          (item.type === "C" && item.category !== "Income")) &&
+        item.year === year
+    )
+    .reduce((sum, item) => sum + item.amount, 0);
+  const roundedAmount = Math.round(totalAmount * 10) / 10;
+
+  return Math.abs(roundedAmount);
+};
+
+export const getMonthlySummary = (
+  data: NormalizedTransaction[],
+  year: string,
+  month: string
+): { name: string; value: number }[] => {
+  const totalIncome = totalMonthlyIncome(data, year, month);
+  const totalExpenses = totalMonthlyExpense(data, year, month);
+  const saving = Math.round((totalIncome - totalExpenses) * 10) / 10;
+
+  return [
+    { name: "Income", value: totalIncome },
+    { name: "Expenses", value: totalExpenses },
+    { name: "Savings", value: saving },
+  ];
+};
+
+export const getAnnuallySummary = (
+  data: NormalizedTransaction[],
+  year: string
+): { name: string; value: number }[] => {
+  const totalIncome = totalAnnuallyIncome(data, year);
+  const totalExpenses = totalAnnuallyExpense(data, year);
+  const saving = Math.round((totalIncome - totalExpenses) * 10) / 10;
+
+  return [
+    { name: "Income", value: totalIncome },
+    { name: "Expenses", value: totalExpenses },
+    { name: "Savings", value: saving },
+  ];
+};
