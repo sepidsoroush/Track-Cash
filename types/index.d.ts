@@ -51,3 +51,11 @@ export interface Stats {
   name: string;
   value: number;
 }
+
+export interface Budget {
+  name: string;
+  target: number;
+  spent: number;
+  targetPercentage: number;
+  spentPercentage: number;
+}

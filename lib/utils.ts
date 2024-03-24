@@ -69,3 +69,18 @@ export const incomeSources = [
   { label: "Freelance" },
   { label: "Store" },
 ];
+
+export const monthlyBudgets = [
+  { label: "Groceries", target: 550 },
+  { label: "Restaurants", target: 150 },
+  { label: "Expenses", target: 2200 },
+];
+
+export const annuallyBudgets = [
+  { label: "Groceries", target: 6600 },
+  { label: "Restaurants", target: 1800 },
+  { label: "Expenses", target: 26400 },
+  { label: "Home", target: 1000 },
+  { label: "Personal Care", target: 2000 },
+  { label: "Travel", target: 4000 },
+];
