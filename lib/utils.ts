@@ -58,9 +58,7 @@ export const categories = [
   { label: "Health & Fitness" },
   { label: "Personal Care" },
   { label: "Travel" },
-  { label: "Bank Transfer" },
   { label: "Business expenses" },
-  { label: "Investments" },
   { label: "Miscellaneous" },
 ];
 
@@ -70,17 +68,22 @@ export const incomeSources = [
   { label: "Store" },
 ];
 
-export const monthlyBudgets = [
-  { label: "Groceries", target: 550 },
-  { label: "Restaurants", target: 150 },
-  { label: "Expenses", target: 2200 },
-];
+// export const monthlyBudgets = [
+//   { label: "Groceries", target: 550 },
+//   { label: "Restaurants", target: 150 },
+//   { label: "Expenses", target: 2200 },
+// ];
 
 export const annuallyBudgets = [
-  { label: "Groceries", target: 6600 },
-  { label: "Restaurants", target: 1800 },
-  { label: "Expenses", target: 26400 },
-  { label: "Home", target: 1000 },
-  { label: "Personal Care", target: 2000 },
-  { label: "Travel", target: 4000 },
+  { name: "Transportation", target: 300 },
+  { name: "Bills", target: 10500 },
+  { name: "Subscriptions", target: 400 },
+  { name: "Education", target: 200 },
+  { name: "Health & Fitness", target: 1200 },
+  { name: "Business expenses", target: 1500 },
+  { name: "Groceries", target: 6000 },
+  { name: "Restaurants", target: 2000 },
+  { name: "Home", target: 1000 },
+  { name: "Personal Care", target: 2500 },
+  { name: "Travel", target: 4000 },
 ];
