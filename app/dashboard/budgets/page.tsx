@@ -5,10 +5,12 @@ export const metadata: Metadata = {
   description: "Budgets description",
 };
 
+import { BudgetsTable } from "@/components/reports/budget-table";
+
 export default function DashboardPage() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between text-4xl">
-      Budgets page
+    <div className="flex min-h-screen flex-col items-start justify-start">
+      <BudgetsTable />
     </div>
   );
 }

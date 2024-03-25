@@ -1,6 +1,7 @@
-import { BankTransaction, NormalizedTransaction, Month } from "@/types";
+import { BankTransaction, NormalizedTransaction, Month, Budget } from "@/types";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { Icons } from "@/components/icons";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -74,16 +75,53 @@ export const incomeSources = [
 //   { label: "Expenses", target: 2200 },
 // ];
 
-export const annuallyBudgets = [
-  { name: "Transportation", target: 300 },
-  { name: "Bills", target: 10500 },
-  { name: "Subscriptions", target: 400 },
-  { name: "Education", target: 200 },
-  { name: "Health & Fitness", target: 1200 },
-  { name: "Business expenses", target: 1500 },
-  { name: "Groceries", target: 6000 },
-  { name: "Restaurants", target: 2000 },
-  { name: "Home", target: 1000 },
-  { name: "Personal Care", target: 2500 },
-  { name: "Travel", target: 4000 },
+export const annualBudgets: Budget[] = [
+  { name: "Groceries", target: 6000, spent: 3500, icon: Icons.grocery },
+  { name: "Restaurants", target: 2000, spent: 350, icon: Icons.restaurant },
+
+  { name: "Home", target: 1000, spent: 300, icon: Icons.home },
+  { name: "Bills", target: 10500, spent: 5000, icon: Icons.bill },
+
+  {
+    name: "Health & Fitness",
+    target: 1200,
+    spent: 100,
+    icon: Icons.health,
+  },
+
+  {
+    name: "Personal Care",
+    target: 2500,
+    spent: 750,
+    icon: Icons.personal,
+  },
+  {
+    name: "Transportation",
+    target: 300,
+    spent: 270,
+    icon: Icons.transportation,
+  },
+  { name: "Travel", target: 4000, spent: 1000, icon: Icons.travel },
+
+  {
+    name: "Subscriptions",
+    target: 400,
+    spent: 50,
+    icon: Icons.subscription,
+  },
+  { name: "Education", target: 200, spent: 250, icon: Icons.education },
+
+  {
+    name: "Business expenses",
+    target: 1500,
+    spent: 1000,
+    icon: Icons.business,
+  },
+
+  {
+    name: "Miscellaneous",
+    target: 500,
+    spent: 550,
+    icon: Icons.misc,
+  },
 ];

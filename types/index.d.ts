@@ -56,7 +56,7 @@ export interface Budget {
   name: string;
   target: number;
   spent: number;
-  targetPercentage: number;
-  spentPercentage: number;
-  icon?: LucideIcon;
+  // targetPercentage: number;
+  // spentPercentage: number;
+  icon: LucideIcon;
 }
