@@ -76,17 +76,42 @@ export const incomeSources = [
 // ];
 
 export const annualBudgets: Budget[] = [
-  { name: "Groceries", target: 6000, spent: 3500, icon: Icons.grocery },
-  { name: "Restaurants", target: 2000, spent: 350, icon: Icons.restaurant },
+  {
+    name: "Groceries",
+    target: 6000,
+    spent: 3500,
+    icon: Icons.grocery,
+    tooltip: "Food Supplies, Home Supplies",
+  },
+  {
+    name: "Restaurants",
+    target: 2000,
+    spent: 350,
+    icon: Icons.restaurant,
+    tooltip: "Coffee Shops, Fast Food, Restaurants, Alcohol & Bars",
+  },
 
-  { name: "Home", target: 1000, spent: 300, icon: Icons.home },
-  { name: "Bills", target: 10500, spent: 5000, icon: Icons.bill },
+  {
+    name: "Home",
+    target: 1000,
+    spent: 300,
+    icon: Icons.home,
+    tooltip: "Furnitures, Home Appliances, Electronic Devices",
+  },
+  {
+    name: "Bills",
+    target: 10500,
+    spent: 5000,
+    icon: Icons.bill,
+    tooltip: "Rent, Utilities, Internet, Mobile Phone",
+  },
 
   {
     name: "Health & Fitness",
     target: 1200,
     spent: 100,
     icon: Icons.health,
+    tooltip: "Doctor, Dentist, Pharmacy, Therapist, Gym, Sports, Medicine",
   },
 
   {
@@ -94,28 +119,45 @@ export const annualBudgets: Budget[] = [
     target: 2500,
     spent: 750,
     icon: Icons.personal,
+    tooltip: "Clothing, Sportswear, Hobbies, Cosmetic , Perfumes, Hair Salon",
   },
   {
     name: "Transportation",
     target: 300,
     spent: 270,
     icon: Icons.transportation,
+    tooltip: "Public Transportation, Taxi, Scooter, Train",
   },
-  { name: "Travel", target: 4000, spent: 1000, icon: Icons.travel },
+  {
+    name: "Travel",
+    target: 4000,
+    spent: 1000,
+    icon: Icons.travel,
+    tooltip:
+      "Flight, Hotel, Transportaions, Food & Restaurant, Souvenirs , Tourism Attractions, Outdoords Hobbies",
+  },
 
   {
     name: "Subscriptions",
     target: 400,
     spent: 50,
     icon: Icons.subscription,
+    tooltip: "Music, Television, Cloud, Other",
   },
-  { name: "Education", target: 200, spent: 250, icon: Icons.education },
+  {
+    name: "Education",
+    target: 200,
+    spent: 250,
+    icon: Icons.education,
+    tooltip: "Tuition, Books & Supplies, Online Courses, Softwares",
+  },
 
   {
     name: "Business expenses",
     target: 1500,
     spent: 1000,
     icon: Icons.business,
+    tooltip: "Electronic devices, Office supplies, Taxes, Service fees",
   },
 
   {
@@ -123,5 +165,6 @@ export const annualBudgets: Budget[] = [
     target: 500,
     spent: 550,
     icon: Icons.misc,
+    tooltip: "Fees & Charges, Gifts & Donations, Other",
   },
 ];

@@ -4,6 +4,12 @@ import * as React from "react";
 import { ColumnDef } from "@tanstack/react-table";
 
 import { Progress } from "@/components/ui/progress";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 import { Budget } from "@/types";
 
@@ -13,12 +19,22 @@ export const columns: ColumnDef<Budget>[] = [
     header: "Category",
     cell: ({ row }) => {
       const name = row.getValue("name") as string;
+      const tooltip = row.original.tooltip;
       const Icon = row.original.icon;
       return (
-        <div className="flex items-center gap-2">
-          <Icon />
-          <div className="capitalize">{name}</div>
-        </div>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              <div className="flex items-center gap-2">
+                <Icon />
+                <div className="capitalize">{name}</div>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{tooltip}</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       );
     },
   },

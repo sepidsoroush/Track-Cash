@@ -59,4 +59,5 @@ export interface Budget {
   // targetPercentage: number;
   // spentPercentage: number;
   icon: LucideIcon;
+  tooltip: string;
 }
