@@ -116,7 +116,7 @@ export const annualBudgets: Budget[] = [
 
   {
     name: "Personal Care",
-    target: 2500,
+    target: 2400,
     spent: 750,
     icon: Icons.personal,
     tooltip: "Clothing, Sportswear, Hobbies, Cosmetic , Perfumes, Hair Salon",

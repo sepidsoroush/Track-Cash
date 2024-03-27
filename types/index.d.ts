@@ -52,12 +52,18 @@ export interface Stats {
   value: number;
 }
 
+export interface BudgetStats {
+  name: string;
+  targetPercent: number;
+  overBudget?: number;
+  spent?: number;
+  alert?: number;
+}
+
 export interface Budget {
   name: string;
   target: number;
   spent: number;
-  // targetPercentage: number;
-  // spentPercentage: number;
   icon: LucideIcon;
   tooltip: string;
 }

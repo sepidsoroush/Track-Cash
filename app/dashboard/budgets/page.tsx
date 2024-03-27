@@ -6,11 +6,13 @@ export const metadata: Metadata = {
 };
 
 import { BudgetsTable } from "@/components/reports/budget-table";
+import BudgetReport from "@/components/reports/budget-report";
 
 export default function DashboardPage() {
   return (
-    <div className="flex min-h-screen flex-col items-start justify-start">
+    <div className="flex min-h-screen flex-row items-start justify-start">
       <BudgetsTable />
+      <BudgetReport />
     </div>
   );
 }

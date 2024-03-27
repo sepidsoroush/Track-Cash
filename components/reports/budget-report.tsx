@@ -1,0 +1,60 @@
+"use client";
+
+import { useFilterContext } from "@/context/FilterContext";
+
+import { getAnnuallyExpensesByCategory } from "@/lib/stats";
+import { normalizeTransactions } from "@/lib/utils";
+
+import { CardsStats } from "@/components/layout/card-stats";
+import { LineBarComposedChart } from "../charts/composed-chart";
+
+import { BudgetStats } from "@/types";
+
+import data from "@/assets/data.json";
+import { annualBudgets } from "@/lib/utils";
+
+export default function BudgetReport() {
+  const { year: selectedYear } = useFilterContext();
+
+  const normalizedData = normalizeTransactions(data);
+
+  const annuallyExpenses = getAnnuallyExpensesByCategory(
+    normalizedData,
+    selectedYear
+  );
+
+  const budgetStatsArray: BudgetStats[] = annualBudgets.map((stats) => {
+    const spentPercent =
+      (Math.round((stats.spent / stats.target) * 100) * 10) / 10;
+
+    let overBudget = 0;
+    let spent = 0;
+    let alert = 0;
+
+    if (spentPercent >= 100) {
+      overBudget = spentPercent;
+    } else if (spentPercent > 80) {
+      alert = spentPercent;
+    } else {
+      spent = spentPercent;
+    }
+
+    return {
+      name: stats.name,
+      targetPercent: 100,
+      overBudget: overBudget > 0 ? overBudget : undefined,
+      spent: spent > 0 ? spent : undefined,
+      alert: alert > 0 ? alert : undefined,
+    };
+  });
+
+  return (
+    <div className="flex flex-col gap-4 p-4">
+      <CardsStats title={`Annually Budgets By Category in ${selectedYear}`}>
+        <div className="h-[300px] w-[600px]">
+          <LineBarComposedChart data={budgetStatsArray} />
+        </div>
+      </CardsStats>
+    </div>
+  );
+}
