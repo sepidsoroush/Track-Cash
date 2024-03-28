@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { YearSelection } from "@/components/dashboard/year-selection";
 import { MonthSelection } from "@/components/dashboard/month-selection";
 import { CategorySelection } from "@/components/dashboard/category-selection";
+import { TurnOffDefaultPropsWarning } from "../turnoff-error";
 
 import MonthlyReports from "./monthly-reports";
 import YearlyReports from "./yearly-reports";
@@ -29,6 +30,7 @@ export function DashboardShell() {
           <CategorySelection />
         </nav>
       </div>
+      <TurnOffDefaultPropsWarning />
 
       <TabsContent value="monthly">
         <MonthlyReports />
