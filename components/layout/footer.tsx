@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 import { ModeToggle } from "@/components/layout/mode-toggle";
-import { Icons } from "../icons";
+import { Icons } from "../common/icons";
 
 export function Footer({ className }: React.HTMLAttributes<HTMLElement>) {
   return (

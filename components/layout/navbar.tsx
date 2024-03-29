@@ -7,7 +7,7 @@ import { SignedIn, UserButton, SignedOut, SignInButton } from "@clerk/nextjs";
 
 import { NavItem } from "@/types";
 import { cn } from "@/lib/utils";
-import { Icons } from "../icons";
+import { Icons } from "../common/icons";
 import { MobileNav } from "./mobile-navbar";
 
 const items: NavItem[] = [

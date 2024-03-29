@@ -1,7 +1,7 @@
 import { BankTransaction, NormalizedTransaction, Month, Budget } from "@/types";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { Icons } from "@/components/icons";
+import { Icons } from "@/components/common/icons";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

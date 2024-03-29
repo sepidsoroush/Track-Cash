@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: "Dashboard description",
 };
 
-import { DashboardShell } from "@/components/dashboard/dashboard-shell";
+import { DashboardShell } from "@/components/filters/dashboard-shell";
 
 export default function DashboardPage() {
   return <DashboardShell />;

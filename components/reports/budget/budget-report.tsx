@@ -6,9 +6,9 @@ import { getAnnuallyExpensesByCategory } from "@/lib/stats";
 import { normalizeTransactions } from "@/lib/utils";
 import { annualBudgets } from "@/lib/utils";
 
-import { TurnOffDefaultPropsWarning } from "../turnoff-error";
+import { TurnOffDefaultPropsWarning } from "../../common/turnoff-error";
 import { CardsStats } from "@/components/layout/card-stats";
-import { LineBarComposedChart } from "../charts/composed-chart";
+import { LineBarComposedChart } from "../../charts/composed-chart";
 
 import { BudgetStats } from "@/types";
 

@@ -11,10 +11,10 @@ import {
 import { normalizeTransactions } from "@/lib/utils";
 
 import { CardsStats } from "@/components/layout/card-stats";
-import { SimpleBarChart } from "../charts/simple-bar-chart";
-import { SimpleLineChart } from "../charts/simple-line-chart";
-import { SimplePieChart } from "../charts/simple-pie-chart";
-import { TwoLevelPieChart } from "../charts/two-level-pie-chart";
+import { SimpleBarChart } from "../../charts/simple-bar-chart";
+import { SimpleLineChart } from "../../charts/simple-line-chart";
+import { SimplePieChart } from "../../charts/simple-pie-chart";
+import { TwoLevelPieChart } from "../../charts/two-level-pie-chart";
 
 import data from "@/assets/data.json";
 

@@ -5,8 +5,8 @@ export const metadata: Metadata = {
   description: "Budgets description",
 };
 
-import { BudgetsTable } from "@/components/reports/budget-table";
-import BudgetReport from "@/components/reports/budget-report";
+import { BudgetsTable } from "@/components/reports/budget/budget-table";
+import BudgetReport from "@/components/reports/budget/budget-report";
 
 export default function DashboardPage() {
   return (

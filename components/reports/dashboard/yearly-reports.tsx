@@ -9,8 +9,8 @@ import { normalizeTransactions } from "@/lib/utils";
 
 import { CardsStats } from "@/components/layout/card-stats";
 import { SimplePieChart } from "@/components/charts/simple-pie-chart";
-import { SimpleBarChart } from "../charts/simple-bar-chart";
-import { TwoLevelPieChart } from "../charts/two-level-pie-chart";
+import { SimpleBarChart } from "../../charts/simple-bar-chart";
+import { TwoLevelPieChart } from "../../charts/two-level-pie-chart";
 
 import data from "@/assets/data.json";
 

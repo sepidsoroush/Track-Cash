@@ -3,13 +3,13 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Label } from "@/components/ui/label";
 
-import { YearSelection } from "@/components/dashboard/year-selection";
-import { MonthSelection } from "@/components/dashboard/month-selection";
-import { CategorySelection } from "@/components/dashboard/category-selection";
-import { TurnOffDefaultPropsWarning } from "../turnoff-error";
+import { YearSelection } from "@/components/filters/year-selection";
+import { MonthSelection } from "@/components/filters/month-selection";
+import { CategorySelection } from "@/components/filters/category-selection";
+import { TurnOffDefaultPropsWarning } from "../common/turnoff-error";
 
-import MonthlyReports from "./monthly-reports";
-import YearlyReports from "./yearly-reports";
+import MonthlyReports from "../reports/dashboard/monthly-reports";
+import YearlyReports from "../reports/dashboard/yearly-reports";
 
 export function DashboardShell() {
   return (
