@@ -31,6 +31,7 @@ export interface BankTransaction {
 
 export interface NormalizedTransaction {
   accountNo?: string;
+  date: string;
   year: string;
   month: string;
   label?: string;

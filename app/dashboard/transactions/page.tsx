@@ -1,3 +1,4 @@
+import { TransactionsTable } from "@/components/reports/transactions/transactions-table";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -7,8 +8,8 @@ export const metadata: Metadata = {
 
 export default function DashboardPage() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between text-4xl">
-      Transactions page
+    <div className="flex min-h-screen flex-row items-start justify-start">
+      <TransactionsTable />
     </div>
   );
 }

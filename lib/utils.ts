@@ -14,6 +14,7 @@ export const normalizeTransactions = (
     accountNo: transaction["Customer account no"],
     year: transaction.Date.substring(0, 4),
     month: transaction.Date.substring(5, 7),
+    date: transaction.Date,
     label: transaction["Sender/receiver"],
     type: transaction["Debit/Credit (D/C)"],
     amount: transaction.Amount,
