@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import { ColumnDef } from "@tanstack/react-table";
 import { cn } from "@/lib/utils";
 
@@ -10,10 +9,9 @@ export const transactionsColumns: ColumnDef<NormalizedTransaction>[] = [
   {
     accessorKey: "date",
     header: "Date",
-    size: 250,
     cell: ({ row }) => {
       const date = row.getValue("date") as string;
-      return <div>{date}</div>;
+      return <div className="w-24 pr-2">{date}</div>;
     },
   },
   {
@@ -21,7 +19,7 @@ export const transactionsColumns: ColumnDef<NormalizedTransaction>[] = [
     header: "Sender/receiver",
     cell: ({ row }) => {
       const label = row.getValue("label") as string;
-      return <div className="capitalize">{label}</div>;
+      return <div className="capitalize pr-2">{label}</div>;
     },
   },
   {
@@ -33,7 +31,7 @@ export const transactionsColumns: ColumnDef<NormalizedTransaction>[] = [
       return (
         <div
           className={cn(
-            "text-right font-medium",
+            "text-right font-medium pr-2",
             amount > 0 ? "text-green-600" : "text-red-600"
           )}
         >
@@ -47,7 +45,7 @@ export const transactionsColumns: ColumnDef<NormalizedTransaction>[] = [
     header: "Description",
     cell: ({ row }) => {
       const description = row.getValue("description") as string;
-      return <div className="capitalize">{description}</div>;
+      return <div className="capitalize pr-2">{description}</div>;
     },
   },
   {

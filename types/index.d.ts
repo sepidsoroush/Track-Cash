@@ -1,5 +1,7 @@
 import { LucideIcon } from "lucide-react";
 
+export interface Common {}
+
 export interface NavItem {
   title: string;
   href: string;
@@ -30,6 +32,7 @@ export interface BankTransaction {
 }
 
 export interface NormalizedTransaction {
+  id: number;
   accountNo?: string;
   date: string;
   year: string;

@@ -11,6 +11,7 @@ export const normalizeTransactions = (
   transactions: BankTransaction[]
 ): NormalizedTransaction[] => {
   return transactions.map((transaction) => ({
+    id: Math.floor(Math.random() * 100),
     accountNo: transaction["Customer account no"],
     year: transaction.Date.substring(0, 4),
     month: transaction.Date.substring(5, 7),
