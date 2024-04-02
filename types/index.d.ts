@@ -16,7 +16,6 @@ export interface Transaction {
   year: string;
   month: string;
   label?: string;
-  type: string;
   amount: number;
   description?: string | number;
   category: string;

@@ -33,18 +33,17 @@ function generateYearsArray() {
 export const years = generateYearsArray();
 
 export const categories = [
-  { label: "Income", type: "income" },
-  { label: "Transportation", type: "expense" },
-  { label: "Bills", type: "expense" },
-  { label: "Subscriptions", type: "expense" },
-  { label: "Education", type: "expense" },
-  { label: "Groceries", type: "expense" },
-  { label: "Restaurants", type: "expense" },
-  { label: "Health & Fitness", type: "expense" },
-  { label: "Personal Care", type: "expense" },
-  { label: "Travel", type: "expense" },
-  { label: "Business expenses", type: "expense" },
-  { label: "Miscellaneous", type: "expense" },
+  { label: "Transportation" },
+  { label: "Bills" },
+  { label: "Subscriptions" },
+  { label: "Education" },
+  { label: "Groceries" },
+  { label: "Restaurants" },
+  { label: "Health & Fitness" },
+  { label: "Personal Care" },
+  { label: "Travel" },
+  { label: "Business expenses" },
+  { label: "Miscellaneous" },
 ];
 
 export const incomeSources = [

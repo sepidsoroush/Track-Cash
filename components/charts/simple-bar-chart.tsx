@@ -71,7 +71,6 @@ export function SimpleBarChart({ data }: Props) {
           dataKey="value"
           stroke="#f2f2f2"
           activeBar={<Rectangle fill="currentColor" stroke="currentColor" />}
-          // label={{ fontSize: 10, position: "top" }}
         />
       </BarChart>
     </ResponsiveContainer>

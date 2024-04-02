@@ -10,8 +10,7 @@ const monthlyExpenseAmount = (
   const totalAmount = data
     .filter(
       (item) =>
-        (item.type === "D" ||
-          (item.type === "C" && item.category !== "Income")) &&
+        item.category !== "Income" &&
         item.year === year &&
         item.month === month &&
         item.category === category
@@ -32,7 +31,6 @@ const monthlyIncomePerSource = (
   return data
     .filter(
       (item) =>
-        item.type === "C" &&
         item.category === "Income" &&
         item.year === year &&
         item.month === month &&
@@ -81,7 +79,6 @@ export const getAnnuallySourceOfIncome = (
 
   incomeSources.forEach((item) => {
     let totalMonthlyIncome = 0;
-    // Calculate monthly income for each source and sum them up
     for (let month = 1; month <= 12; month++) {
       totalMonthlyIncome += monthlyIncomePerSource(
         data,
@@ -135,7 +132,6 @@ export const getAnnuallyExpensesByCategory = (
 };
 
 // Saving, Expense, Income charts:
-
 export const totalMonthlyIncome = (
   data: Transaction[],
   year: string,
@@ -144,10 +140,7 @@ export const totalMonthlyIncome = (
   const totalAmount = data
     .filter(
       (item) =>
-        item.type === "C" &&
-        item.category === "Income" &&
-        item.year === year &&
-        item.month === month
+        item.category === "Income" && item.year === year && item.month === month
     )
     .reduce((sum, item) => sum + item.amount, 0);
 
@@ -161,10 +154,7 @@ export const totalAnnuallyIncome = (
   year: string
 ): number => {
   const totalAmount = data
-    .filter(
-      (item) =>
-        item.type === "C" && item.category === "Income" && item.year === year
-    )
+    .filter((item) => item.category === "Income" && item.year === year)
     .reduce((sum, item) => sum + item.amount, 0);
   const roundedAmount = Math.round(totalAmount * 10) / 10;
 
@@ -179,10 +169,7 @@ export const totalMonthlyExpense = (
   const totalAmount = data
     .filter(
       (item) =>
-        (item.type === "D" ||
-          (item.type === "C" && item.category !== "Income")) &&
-        item.year === year &&
-        item.month === month
+        item.category !== "Income" && item.year === year && item.month === month
     )
     .reduce((sum, item) => sum + item.amount, 0);
   const roundedAmount = Math.round(totalAmount * 10) / 10;
@@ -195,12 +182,7 @@ export const totalAnnuallyExpense = (
   year: string
 ): number => {
   const totalAmount = data
-    .filter(
-      (item) =>
-        (item.type === "D" ||
-          (item.type === "C" && item.category !== "Income")) &&
-        item.year === year
-    )
+    .filter((item) => item.category !== "Income" && item.year === year)
     .reduce((sum, item) => sum + item.amount, 0);
   const roundedAmount = Math.round(totalAmount * 10) / 10;
 

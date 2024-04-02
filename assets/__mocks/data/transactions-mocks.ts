@@ -29,9 +29,8 @@ const createTransactions = (howMany: number): Transaction[] => {
     const accountNo = accounts[0].accountNo;
     const amount = faker.finance.amount({ dec: 2, min: 1, max: 10000 });
     const description = faker.finance.transactionDescription();
-    const type = "C";
 
-    const category = categories[0].label;
+    const category = "Income";
     const incomeSource = faker.helpers.arrayElement(incomeSources).label;
 
     transactionsData.push({
@@ -43,7 +42,6 @@ const createTransactions = (howMany: number): Transaction[] => {
       label,
       amount: Number(amount),
       description,
-      type,
       category,
       incomeSource,
     });
@@ -68,9 +66,8 @@ const createTransactions = (howMany: number): Transaction[] => {
       max: -1,
     });
     const description = faker.finance.transactionDescription();
-    const type = "D";
 
-    const category = faker.helpers.arrayElement(categories.slice(1)).label;
+    const category = faker.helpers.arrayElement(categories).label;
 
     transactionsData.push({
       id: idCounter++,
@@ -81,7 +78,6 @@ const createTransactions = (howMany: number): Transaction[] => {
       label,
       amount: Number(amount),
       description,
-      type,
       category,
     });
   }
