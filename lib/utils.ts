@@ -51,18 +51,18 @@ function generateYearsArray() {
 export const years = generateYearsArray();
 
 export const categories = [
-  // { label: "Income" },
-  { label: "Transportation" },
-  { label: "Bills" },
-  { label: "Subscriptions" },
-  { label: "Education" },
-  { label: "Groceries" },
-  { label: "Restaurants" },
-  { label: "Health & Fitness" },
-  { label: "Personal Care" },
-  { label: "Travel" },
-  { label: "Business expenses" },
-  { label: "Miscellaneous" },
+  { label: "Income", type: "income" },
+  { label: "Transportation", type: "expense" },
+  { label: "Bills", type: "expense" },
+  { label: "Subscriptions", type: "expense" },
+  { label: "Education", type: "expense" },
+  { label: "Groceries", type: "expense" },
+  { label: "Restaurants", type: "expense" },
+  { label: "Health & Fitness", type: "expense" },
+  { label: "Personal Care", type: "expense" },
+  { label: "Travel", type: "expense" },
+  { label: "Business expenses", type: "expense" },
+  { label: "Miscellaneous", type: "expense" },
 ];
 
 export const incomeSources = [
@@ -70,12 +70,6 @@ export const incomeSources = [
   { label: "Freelance" },
   { label: "Store" },
 ];
-
-// export const monthlyBudgets = [
-//   { label: "Groceries", target: 550 },
-//   { label: "Restaurants", target: 150 },
-//   { label: "Expenses", target: 2200 },
-// ];
 
 export const annualBudgets: Budget[] = [
   {
@@ -169,4 +163,20 @@ export const annualBudgets: Budget[] = [
     icon: Icons.misc,
     tooltip: "Fees & Charges, Gifts & Donations, Other",
   },
+];
+
+export const accounts = [
+  {
+    accountNo: "SA2362186404656935127",
+    accountName: "Company Account",
+  },
+  {
+    accountNo: "TR736918640040966092800056",
+    accountName: "Personal Account",
+  },
+  {
+    accountNo: "FR2080082330898474S3Z620224",
+    accountName: "Loan Account",
+  },
+  { accountNo: "DE84102270750900117001", accountName: "Join Account" },
 ];

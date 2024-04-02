@@ -45,6 +45,16 @@ export interface NormalizedTransaction {
   incomeSource?: string;
 }
 
+// export interface SimpleTransaction {
+//   id: number;
+//   date: string;
+//   label: string;
+//   amount: string;
+//   description: string;
+//   category: string;
+//   incomeSource?: string;
+// }
+
 export interface Month {
   value: string;
   label: string;

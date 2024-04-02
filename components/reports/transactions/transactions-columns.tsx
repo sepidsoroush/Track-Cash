@@ -48,6 +48,7 @@ export const transactionsColumns: ColumnDef<NormalizedTransaction>[] = [
       return <div className="capitalize pr-2">{description}</div>;
     },
   },
+
   {
     accessorKey: "category",
     header: "Category",
