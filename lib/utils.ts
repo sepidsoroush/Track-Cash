@@ -1,4 +1,4 @@
-import { BankTransaction, NormalizedTransaction, Month, Budget } from "@/types";
+import { Month } from "@/types";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { Icons } from "@/components/common/icons";
@@ -6,24 +6,6 @@ import { Icons } from "@/components/common/icons";
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
-
-export const normalizeTransactions = (
-  transactions: BankTransaction[]
-): NormalizedTransaction[] => {
-  return transactions.map((transaction) => ({
-    id: Math.floor(Math.random() * 100),
-    accountNo: transaction["Customer account no"],
-    year: transaction.Date.substring(0, 4),
-    month: transaction.Date.substring(5, 7),
-    date: transaction.Date,
-    label: transaction["Sender/receiver"],
-    type: transaction["Debit/Credit (D/C)"],
-    amount: transaction.Amount,
-    description: transaction.Description,
-    category: transaction.Category,
-    incomeSource: transaction["Source of income"],
-  }));
-};
 
 export const months: Month[] = [
   { label: "Jan", value: "01", title: "January" },
@@ -71,18 +53,17 @@ export const incomeSources = [
   { label: "Store" },
 ];
 
-export const annualBudgets: Budget[] = [
+export const annualBudgets = [
   {
     name: "Groceries",
     target: 6000,
-    spent: 3500,
     icon: Icons.grocery,
     tooltip: "Food Supplies, Home Supplies",
   },
   {
     name: "Restaurants",
     target: 2000,
-    spent: 350,
+
     icon: Icons.restaurant,
     tooltip: "Coffee Shops, Fast Food, Restaurants, Alcohol & Bars",
   },
@@ -90,14 +71,12 @@ export const annualBudgets: Budget[] = [
   {
     name: "Home",
     target: 1000,
-    spent: 300,
     icon: Icons.home,
     tooltip: "Furnitures, Home Appliances, Electronic Devices",
   },
   {
     name: "Bills",
     target: 10500,
-    spent: 5000,
     icon: Icons.bill,
     tooltip: "Rent, Utilities, Internet, Mobile Phone",
   },
@@ -105,7 +84,6 @@ export const annualBudgets: Budget[] = [
   {
     name: "Health & Fitness",
     target: 1200,
-    spent: 100,
     icon: Icons.health,
     tooltip: "Doctor, Dentist, Pharmacy, Therapist, Gym, Sports, Medicine",
   },
@@ -113,21 +91,19 @@ export const annualBudgets: Budget[] = [
   {
     name: "Personal Care",
     target: 2400,
-    spent: 750,
+
     icon: Icons.personal,
     tooltip: "Clothing, Sportswear, Hobbies, Cosmetic , Perfumes, Hair Salon",
   },
   {
     name: "Transportation",
     target: 300,
-    spent: 270,
     icon: Icons.transportation,
     tooltip: "Public Transportation, Taxi, Scooter, Train",
   },
   {
     name: "Travel",
     target: 4000,
-    spent: 1000,
     icon: Icons.travel,
     tooltip:
       "Flight, Hotel, Transportaions, Food & Restaurant, Souvenirs , Tourism Attractions, Outdoords Hobbies",
@@ -136,14 +112,12 @@ export const annualBudgets: Budget[] = [
   {
     name: "Subscriptions",
     target: 400,
-    spent: 50,
     icon: Icons.subscription,
     tooltip: "Music, Television, Cloud, Other",
   },
   {
     name: "Education",
     target: 200,
-    spent: 250,
     icon: Icons.education,
     tooltip: "Tuition, Books & Supplies, Online Courses, Softwares",
   },
@@ -151,7 +125,6 @@ export const annualBudgets: Budget[] = [
   {
     name: "Business expenses",
     target: 1500,
-    spent: 1000,
     icon: Icons.business,
     tooltip: "Electronic devices, Office supplies, Taxes, Service fees",
   },
@@ -159,7 +132,6 @@ export const annualBudgets: Budget[] = [
   {
     name: "Miscellaneous",
     target: 500,
-    spent: 550,
     icon: Icons.misc,
     tooltip: "Fees & Charges, Gifts & Donations, Other",
   },

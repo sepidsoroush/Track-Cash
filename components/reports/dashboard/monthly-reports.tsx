@@ -8,15 +8,13 @@ import {
   getCategoryExpensesTrend,
   getMonthlySummary,
 } from "@/lib/stats";
-import { normalizeTransactions } from "@/lib/utils";
+import { mocktransactions } from "@/assets/__mocks/data/transactions-mocks";
 
 import { CardsStats } from "@/components/layout/card-stats";
 import { SimpleBarChart } from "../../charts/simple-bar-chart";
 import { SimpleLineChart } from "../../charts/simple-line-chart";
 import { SimplePieChart } from "../../charts/simple-pie-chart";
 import { TwoLevelPieChart } from "../../charts/two-level-pie-chart";
-
-import data from "@/assets/data.json";
 
 export default function MonthlyReports() {
   const {
@@ -25,28 +23,26 @@ export default function MonthlyReports() {
     category: selectedCategory,
   } = useFilterContext();
 
-  const normalizedData = normalizeTransactions(data);
-
   const monthlySourcesOfIncome = getMonthlySourceOfIncome(
-    normalizedData,
+    mocktransactions,
     selectedYear,
     selectedMonth.value
   );
 
   const monthlyExpensesByCategory = getMonthlyExpensesByCategory(
-    normalizedData,
+    mocktransactions,
     selectedYear,
     selectedMonth.value
   );
 
   const categoryExpensesTrend = getCategoryExpensesTrend(
-    normalizedData,
+    mocktransactions,
     selectedYear,
     selectedCategory
   );
 
   const monthlySummary = getMonthlySummary(
-    normalizedData,
+    mocktransactions,
     selectedYear,
     selectedMonth.value
   );

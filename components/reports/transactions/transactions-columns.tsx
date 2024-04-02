@@ -3,9 +3,9 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { cn } from "@/lib/utils";
 
-import { NormalizedTransaction } from "@/types";
+import { Transaction } from "@/types";
 
-export const transactionsColumns: ColumnDef<NormalizedTransaction>[] = [
+export const transactionsColumns: ColumnDef<Transaction>[] = [
   {
     accessorKey: "date",
     header: "Date",

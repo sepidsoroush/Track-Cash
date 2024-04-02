@@ -1,18 +1,18 @@
 import { faker } from "@faker-js/faker";
 import { categories, incomeSources, accounts } from "@/lib/utils";
-import { NormalizedTransaction } from "@/types";
+import { Transaction } from "@/types";
 
-const transactions: NormalizedTransaction[] = [];
+const transactions: Transaction[] = [];
 
-const howManyTransactions = 100;
+const howManyTransactions = 1000;
 
-const createTransactions = (howMany: number): NormalizedTransaction[] => {
+const createTransactions = (howMany: number): Transaction[] => {
   let idCounter = 1000;
 
   const numIncomeTransactions = Math.ceil(howMany * 0.05);
   const numExpenseTransactions = howMany - numIncomeTransactions;
 
-  const transactionsData: NormalizedTransaction[] = [];
+  const transactionsData: Transaction[] = [];
 
   for (let i = 0; i < numIncomeTransactions; i++) {
     const date = faker.date
@@ -86,10 +86,16 @@ const createTransactions = (howMany: number): NormalizedTransaction[] => {
     });
   }
 
-  return transactionsData;
+  const allTransactions = [...transactionsData];
+
+  allTransactions.sort((a, b) => {
+    return new Date(a.date).getTime() - new Date(b.date).getTime();
+  });
+
+  return allTransactions;
 };
 
-export const generateMocktransactions = (): NormalizedTransaction[] => {
+export const generateMocktransactions = (): Transaction[] => {
   if (transactions.length == 0) {
     const calculatedTransactions = createTransactions(howManyTransactions);
     transactions.push(...calculatedTransactions);

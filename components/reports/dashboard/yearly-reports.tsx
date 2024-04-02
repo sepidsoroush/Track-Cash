@@ -5,28 +5,27 @@ import {
   getAnnuallySourceOfIncome,
   getAnnuallySummary,
 } from "@/lib/stats";
-import { normalizeTransactions } from "@/lib/utils";
+import { mocktransactions } from "@/assets/__mocks/data/transactions-mocks";
 
 import { CardsStats } from "@/components/layout/card-stats";
 import { SimplePieChart } from "@/components/charts/simple-pie-chart";
 import { SimpleBarChart } from "../../charts/simple-bar-chart";
 import { TwoLevelPieChart } from "../../charts/two-level-pie-chart";
 
-import data from "@/assets/data.json";
-
 export default function YearlyReports() {
   const { year: selectedYear } = useFilterContext();
 
-  const normalizedData = normalizeTransactions(data);
-
   const sourcesOfIncome = getAnnuallySourceOfIncome(
-    normalizedData,
+    mocktransactions,
     selectedYear
   );
 
-  const expenses = getAnnuallyExpensesByCategory(normalizedData, selectedYear);
+  const expenses = getAnnuallyExpensesByCategory(
+    mocktransactions,
+    selectedYear
+  );
 
-  const annuallySummary = getAnnuallySummary(normalizedData, selectedYear);
+  const annuallySummary = getAnnuallySummary(mocktransactions, selectedYear);
 
   const data01 = annuallySummary.filter((item) => item.name === "Income");
   const data02 = annuallySummary.filter((item) => item.name !== "Income");

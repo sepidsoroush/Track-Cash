@@ -9,29 +9,7 @@ export interface NavItem {
   icon?: LucideIcon;
 }
 
-export interface BankTransaction {
-  "Customer account no"?: string;
-  Date: string;
-  "Sender/receiver account"?: string;
-  "Sender/receiver"?: string;
-  "Sender bank code"?: number;
-  "Debit/Credit (D/C)": string;
-  Amount: number;
-  "Reference number"?: string | number;
-  Description?: string | number;
-  Fee?: number;
-  Currency?: string;
-  "Transaction reference"?: number;
-  "Document no"?: string | number;
-  "Archiving code"?: string | number;
-  "Personal code or register code"?: string | number;
-  "Sender/receiver bank BIC"?: string;
-  "Account servicer reference"?: string;
-  Category: string;
-  "Source of income"?: string;
-}
-
-export interface NormalizedTransaction {
+export interface Transaction {
   id: number;
   accountNo?: string;
   date: string;
@@ -44,16 +22,6 @@ export interface NormalizedTransaction {
   category: string;
   incomeSource?: string;
 }
-
-// export interface SimpleTransaction {
-//   id: number;
-//   date: string;
-//   label: string;
-//   amount: string;
-//   description: string;
-//   category: string;
-//   incomeSource?: string;
-// }
 
 export interface Month {
   value: string;

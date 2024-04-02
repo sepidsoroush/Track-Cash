@@ -1,18 +1,11 @@
 import type { Metadata } from "next";
+import BudgetShell from "@/components/reports/budget/budget-shell";
 
 export const metadata: Metadata = {
   title: "Budgets",
   description: "Budgets description",
 };
 
-import { BudgetsTable } from "@/components/reports/budget/budget-table";
-import BudgetReport from "@/components/reports/budget/budget-report";
-
 export default function DashboardPage() {
-  return (
-    <div className="flex min-h-screen flex-row items-start justify-start">
-      <BudgetsTable />
-      <BudgetReport />
-    </div>
-  );
+  return <BudgetShell />;
 }

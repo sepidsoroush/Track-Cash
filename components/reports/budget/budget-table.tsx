@@ -15,10 +15,15 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { annualBudgets as data } from "@/lib/utils";
 import { columns } from "./budget-columns";
 
-export function BudgetsTable() {
+import { Budget } from "@/types";
+
+type Props = {
+  data: Budget[];
+};
+
+export function BudgetsTable({ data }: Props) {
   const table = useReactTable({
     data,
     columns,

@@ -1,8 +1,8 @@
-import { NormalizedTransaction, Stats } from "@/types";
+import { Transaction, Stats } from "@/types";
 import { months, incomeSources, categories } from "./utils";
 
 const monthlyExpenseAmount = (
-  data: NormalizedTransaction[],
+  data: Transaction[],
   year: string,
   month: string,
   category: string
@@ -24,7 +24,7 @@ const monthlyExpenseAmount = (
 };
 
 const monthlyIncomePerSource = (
-  data: NormalizedTransaction[],
+  data: Transaction[],
   year: string,
   month: string,
   source: string
@@ -43,7 +43,7 @@ const monthlyIncomePerSource = (
 
 // Monthly trend of CategoryExpenses charts functions
 export const getCategoryExpensesTrend = (
-  data: NormalizedTransaction[],
+  data: Transaction[],
   year: string,
   category: string
 ): Stats[] => {
@@ -59,7 +59,7 @@ export const getCategoryExpensesTrend = (
 
 // SourceOfIncome charts functions
 export const getMonthlySourceOfIncome = (
-  data: NormalizedTransaction[],
+  data: Transaction[],
   year: string,
   month: string
 ): Stats[] => {
@@ -74,7 +74,7 @@ export const getMonthlySourceOfIncome = (
 };
 
 export const getAnnuallySourceOfIncome = (
-  data: NormalizedTransaction[],
+  data: Transaction[],
   year: string
 ): Stats[] => {
   const stats: Stats[] = [];
@@ -98,7 +98,7 @@ export const getAnnuallySourceOfIncome = (
 
 // allCategories charts functions
 export const getMonthlyExpensesByCategory = (
-  data: NormalizedTransaction[],
+  data: Transaction[],
   year: string,
   month: string
 ): Stats[] => {
@@ -113,7 +113,7 @@ export const getMonthlyExpensesByCategory = (
 };
 
 export const getAnnuallyExpensesByCategory = (
-  data: NormalizedTransaction[],
+  data: Transaction[],
   year: string
 ): Stats[] => {
   const stats: Stats[] = [];
@@ -137,7 +137,7 @@ export const getAnnuallyExpensesByCategory = (
 // Saving, Expense, Income charts:
 
 export const totalMonthlyIncome = (
-  data: NormalizedTransaction[],
+  data: Transaction[],
   year: string,
   month: string
 ): number => {
@@ -157,7 +157,7 @@ export const totalMonthlyIncome = (
 };
 
 export const totalAnnuallyIncome = (
-  data: NormalizedTransaction[],
+  data: Transaction[],
   year: string
 ): number => {
   const totalAmount = data
@@ -172,7 +172,7 @@ export const totalAnnuallyIncome = (
 };
 
 export const totalMonthlyExpense = (
-  data: NormalizedTransaction[],
+  data: Transaction[],
   year: string,
   month: string
 ): number => {
@@ -191,7 +191,7 @@ export const totalMonthlyExpense = (
 };
 
 export const totalAnnuallyExpense = (
-  data: NormalizedTransaction[],
+  data: Transaction[],
   year: string
 ): number => {
   const totalAmount = data
@@ -208,7 +208,7 @@ export const totalAnnuallyExpense = (
 };
 
 export const getMonthlySummary = (
-  data: NormalizedTransaction[],
+  data: Transaction[],
   year: string,
   month: string
 ): { name: string; value: number }[] => {
@@ -224,7 +224,7 @@ export const getMonthlySummary = (
 };
 
 export const getAnnuallySummary = (
-  data: NormalizedTransaction[],
+  data: Transaction[],
   year: string
 ): { name: string; value: number }[] => {
   const totalIncome = totalAnnuallyIncome(data, year);
