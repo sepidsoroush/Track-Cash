@@ -5,10 +5,8 @@ export const metadata: Metadata = {
   description: "Categories description",
 };
 
+import CategoriesShell from "@/components/shells/categories-shell";
+
 export default function DashboardPage() {
-  return (
-    <div className="flex min-h-screen flex-col items-center justify-between text-4xl">
-      Categories page
-    </div>
-  );
+  return <CategoriesShell />;
 }

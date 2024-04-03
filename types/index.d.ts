@@ -48,3 +48,27 @@ export interface Budget {
   icon: LucideIcon;
   tooltip: string;
 }
+
+// Interface to define our Category model on the frontend
+export interface Category {
+  _id?: number;
+  label: string;
+  budget: number;
+  icon: LucideIcon;
+  tooltip: string;
+}
+
+// Interface to defining our object of response functions
+export interface ResponseFuncs {
+  GET?: Function;
+  POST?: Function;
+  PUT?: Function;
+  DELETE?: Function;
+}
+
+export interface HttpRequestError {
+  name?: string;
+  message?: string;
+  stack?: string;
+  code?: string;
+}

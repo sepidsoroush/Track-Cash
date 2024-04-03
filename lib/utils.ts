@@ -33,17 +33,87 @@ function generateYearsArray() {
 export const years = generateYearsArray();
 
 export const categories = [
-  { label: "Transportation" },
-  { label: "Bills" },
-  { label: "Subscriptions" },
-  { label: "Education" },
-  { label: "Groceries" },
-  { label: "Restaurants" },
-  { label: "Health & Fitness" },
-  { label: "Personal Care" },
-  { label: "Travel" },
-  { label: "Business expenses" },
-  { label: "Miscellaneous" },
+  {
+    label: "Groceries",
+    budget: 6000,
+    icon: Icons.grocery,
+    tooltip: "Food Supplies, Home Supplies",
+  },
+  {
+    label: "Restaurants",
+    budget: 2000,
+
+    icon: Icons.restaurant,
+    tooltip: "Coffee Shops, Fast Food, Restaurants, Alcohol & Bars",
+  },
+
+  {
+    label: "Home",
+    budget: 1000,
+    icon: Icons.home,
+    tooltip: "Furnitures, Home Appliances, Electronic Devices",
+  },
+  {
+    label: "Bills",
+    budget: 10500,
+    icon: Icons.bill,
+    tooltip: "Rent, Utilities, Internet, Mobile Phone",
+  },
+
+  {
+    label: "Health & Fitness",
+    budget: 1200,
+    icon: Icons.health,
+    tooltip: "Doctor, Dentist, Pharmacy, Therapist, Gym, Sports, Medicine",
+  },
+
+  {
+    label: "Personal Care",
+    budget: 2400,
+
+    icon: Icons.personal,
+    tooltip: "Clothing, Sportswear, Hobbies, Cosmetic , Perfumes, Hair Salon",
+  },
+  {
+    label: "Transportation",
+    budget: 300,
+    icon: Icons.transportation,
+    tooltip: "Public Transportation, Taxi, Scooter, Train",
+  },
+  {
+    label: "Travel",
+    budget: 4000,
+    icon: Icons.travel,
+    tooltip:
+      "Flight, Hotel, Transportaions, Food & Restaurant, Souvenirs , Tourism Attractions, Outdoords Hobbies",
+  },
+
+  {
+    label: "Subscriptions",
+    budget: 400,
+    icon: Icons.subscription,
+    tooltip: "Music, Television, Cloud, Other",
+  },
+  {
+    label: "Education",
+    budget: 200,
+    icon: Icons.education,
+    tooltip: "Tuition, Books & Supplies, Online Courses, Softwares",
+  },
+
+  {
+    label: "Business expenses",
+    budget: 1500,
+    icon: Icons.business,
+    tooltip: "Electronic devices, Office supplies, Taxes, Service fees",
+  },
+
+  {
+    label: "Miscellaneous",
+    budget: 500,
+    icon: Icons.misc,
+    tooltip: "Fees & Charges, Gifts & Donations, Other",
+  },
 ];
 
 export const incomeSources = [
