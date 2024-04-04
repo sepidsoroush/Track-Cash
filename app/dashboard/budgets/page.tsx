@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import BudgetShell from "@/components/reports/budget/budget-shell";
+import BudgetShell from "@/components/shells/budget-shell";
 
 export const metadata: Metadata = {
   title: "Budgets",

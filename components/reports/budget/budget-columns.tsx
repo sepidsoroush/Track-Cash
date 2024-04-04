@@ -56,7 +56,7 @@ export const columns: ColumnDef<Budget>[] = [
     id: "progress",
     header: "Status",
     cell: ({ row }) => {
-      const current = row.getValue("target") as number;
+      const current = row.getValue("budget") as number;
       const spent = row.getValue("spent") as number;
 
       const progressPercent = current > 0 ? (spent / current) * 100 : 0;
@@ -70,10 +70,10 @@ export const columns: ColumnDef<Budget>[] = [
   },
 
   {
-    accessorKey: "target",
+    accessorKey: "budget",
     header: () => <div className="text-right">Budget</div>,
     cell: ({ row }) => {
-      const budget = parseFloat(row.getValue("target"));
+      const budget = parseFloat(row.getValue("budget"));
 
       const formatted = new Intl.NumberFormat("en-US", {
         style: "currency",

@@ -3,10 +3,10 @@
 import { useFilterContext } from "@/context/FilterContext";
 
 import { getAnnuallyExpensesByCategory } from "@/lib/stats";
-import { annualBudgets } from "@/lib/utils";
+import { categories } from "@/lib/utils";
 
-import { BudgetsTable } from "./budget-table";
-import BudgetReport from "./budget-report";
+import { BudgetsTable } from "../reports/budget/budget-table";
+import BudgetReport from "../reports/budget/budget-report";
 
 import { BudgetStats, Budget } from "@/types";
 
@@ -21,13 +21,14 @@ export default function BudgetShell() {
   );
 
   // tabels's data
-  const tableData: Budget[] = annualBudgets.map((budget) => {
+  const tableData: Budget[] = categories.map((budget) => {
     const spent =
-      annuallyExpenses.find((item) => item.name === budget.name)?.value || 0;
+      annuallyExpenses.find((item) => item.name === budget.label)?.value || 0;
 
     return {
-      name: budget.name,
-      target: budget.target,
+      id: budget.id,
+      label: budget.label,
+      budget: budget.budget,
       spent: spent,
       icon: budget.icon,
       tooltip: budget.tooltip,
@@ -35,13 +36,13 @@ export default function BudgetShell() {
   });
 
   // chart's data
-  const budgetStatsArray: BudgetStats[] = annualBudgets.map((stats) => {
+  const budgetStatsArray: BudgetStats[] = categories.map((stats) => {
     const spent =
-      annuallyExpenses.find((item) => item.name === stats.name)?.value || 0;
-    const spentPercent = (Math.round((spent / stats.target) * 100) * 10) / 10;
+      annuallyExpenses.find((item) => item.name === stats.label)?.value || 0;
+    const spentPercent = (Math.round((spent / stats.budget) * 100) * 10) / 10;
 
     let properties: BudgetStats = {
-      name: stats.name,
+      name: stats.label,
       targetPercent: 100,
     };
 

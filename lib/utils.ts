@@ -42,17 +42,13 @@ export const categories = [
   },
   {
     id: 2,
-
     label: "Restaurants",
     budget: 2000,
-
     icon: Icons.restaurant,
     tooltip: "Coffee Shops, Fast Food, Restaurants, Alcohol & Bars",
   },
-
   {
     id: 3,
-
     label: "Home",
     budget: 1000,
     icon: Icons.home,
@@ -66,10 +62,8 @@ export const categories = [
     icon: Icons.bill,
     tooltip: "Rent, Utilities, Internet, Mobile Phone",
   },
-
   {
     id: 5,
-
     label: "Health & Fitness",
     budget: 1200,
     icon: Icons.health,
@@ -78,7 +72,6 @@ export const categories = [
 
   {
     id: 6,
-
     label: "Personal Care",
     budget: 2400,
 
@@ -87,7 +80,6 @@ export const categories = [
   },
   {
     id: 7,
-
     label: "Transportation",
     budget: 300,
     icon: Icons.transportation,
@@ -95,14 +87,12 @@ export const categories = [
   },
   {
     id: 8,
-
     label: "Travel",
     budget: 4000,
     icon: Icons.travel,
     tooltip:
       "Flight, Hotel, Transportaions, Food & Restaurant, Souvenirs , Tourism Attractions, Outdoords Hobbies",
   },
-
   {
     id: 9,
 
@@ -113,25 +103,20 @@ export const categories = [
   },
   {
     id: 10,
-
     label: "Education",
     budget: 200,
     icon: Icons.education,
     tooltip: "Tuition, Books & Supplies, Online Courses, Softwares",
   },
-
   {
     id: 11,
-
     label: "Business expenses",
     budget: 1500,
     icon: Icons.business,
     tooltip: "Electronic devices, Office supplies, Taxes, Service fees",
   },
-
   {
     id: 12,
-
     label: "Miscellaneous",
     budget: 500,
     icon: Icons.misc,
@@ -143,90 +128,6 @@ export const incomeSources = [
   { label: "Company" },
   { label: "Freelance" },
   { label: "Store" },
-];
-
-export const annualBudgets = [
-  {
-    name: "Groceries",
-    target: 6000,
-    icon: Icons.grocery,
-    tooltip: "Food Supplies, Home Supplies",
-  },
-  {
-    name: "Restaurants",
-    target: 2000,
-
-    icon: Icons.restaurant,
-    tooltip: "Coffee Shops, Fast Food, Restaurants, Alcohol & Bars",
-  },
-
-  {
-    name: "Home",
-    target: 1000,
-    icon: Icons.home,
-    tooltip: "Furnitures, Home Appliances, Electronic Devices",
-  },
-  {
-    name: "Bills",
-    target: 10500,
-    icon: Icons.bill,
-    tooltip: "Rent, Utilities, Internet, Mobile Phone",
-  },
-
-  {
-    name: "Health & Fitness",
-    target: 1200,
-    icon: Icons.health,
-    tooltip: "Doctor, Dentist, Pharmacy, Therapist, Gym, Sports, Medicine",
-  },
-
-  {
-    name: "Personal Care",
-    target: 2400,
-
-    icon: Icons.personal,
-    tooltip: "Clothing, Sportswear, Hobbies, Cosmetic , Perfumes, Hair Salon",
-  },
-  {
-    name: "Transportation",
-    target: 300,
-    icon: Icons.transportation,
-    tooltip: "Public Transportation, Taxi, Scooter, Train",
-  },
-  {
-    name: "Travel",
-    target: 4000,
-    icon: Icons.travel,
-    tooltip:
-      "Flight, Hotel, Transportaions, Food & Restaurant, Souvenirs , Tourism Attractions, Outdoords Hobbies",
-  },
-
-  {
-    name: "Subscriptions",
-    target: 400,
-    icon: Icons.subscription,
-    tooltip: "Music, Television, Cloud, Other",
-  },
-  {
-    name: "Education",
-    target: 200,
-    icon: Icons.education,
-    tooltip: "Tuition, Books & Supplies, Online Courses, Softwares",
-  },
-
-  {
-    name: "Business expenses",
-    target: 1500,
-    icon: Icons.business,
-    tooltip: "Electronic devices, Office supplies, Taxes, Service fees",
-  },
-
-  {
-    name: "Miscellaneous",
-    target: 500,
-    icon: Icons.misc,
-    tooltip: "Fees & Charges, Gifts & Donations, Other",
-  },
 ];
 
 export const accounts = [

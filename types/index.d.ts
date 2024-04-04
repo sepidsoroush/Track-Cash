@@ -41,21 +41,16 @@ export interface BudgetStats {
   alert?: number;
 }
 
-export interface Budget {
-  name: string;
-  target: number;
-  spent: number;
-  icon: LucideIcon;
-  tooltip: string;
-}
-
-// Interface to define our Category model on the frontend
 export interface Category {
   id: number;
   label: string;
   budget: number;
   icon: LucideIcon;
   tooltip: string;
+}
+
+export interface Budget extends Category {
+  spent: number;
 }
 
 // Interface to defining our object of response functions
