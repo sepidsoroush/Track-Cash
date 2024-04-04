@@ -51,7 +51,7 @@ export interface Budget {
 
 // Interface to define our Category model on the frontend
 export interface Category {
-  _id?: number;
+  id: number;
   label: string;
   budget: number;
   icon: LucideIcon;

@@ -34,12 +34,15 @@ export const years = generateYearsArray();
 
 export const categories = [
   {
+    id: 1,
     label: "Groceries",
     budget: 6000,
     icon: Icons.grocery,
     tooltip: "Food Supplies, Home Supplies",
   },
   {
+    id: 2,
+
     label: "Restaurants",
     budget: 2000,
 
@@ -48,12 +51,16 @@ export const categories = [
   },
 
   {
+    id: 3,
+
     label: "Home",
     budget: 1000,
     icon: Icons.home,
     tooltip: "Furnitures, Home Appliances, Electronic Devices",
   },
   {
+    id: 4,
+
     label: "Bills",
     budget: 10500,
     icon: Icons.bill,
@@ -61,6 +68,8 @@ export const categories = [
   },
 
   {
+    id: 5,
+
     label: "Health & Fitness",
     budget: 1200,
     icon: Icons.health,
@@ -68,6 +77,8 @@ export const categories = [
   },
 
   {
+    id: 6,
+
     label: "Personal Care",
     budget: 2400,
 
@@ -75,12 +86,16 @@ export const categories = [
     tooltip: "Clothing, Sportswear, Hobbies, Cosmetic , Perfumes, Hair Salon",
   },
   {
+    id: 7,
+
     label: "Transportation",
     budget: 300,
     icon: Icons.transportation,
     tooltip: "Public Transportation, Taxi, Scooter, Train",
   },
   {
+    id: 8,
+
     label: "Travel",
     budget: 4000,
     icon: Icons.travel,
@@ -89,12 +104,16 @@ export const categories = [
   },
 
   {
+    id: 9,
+
     label: "Subscriptions",
     budget: 400,
     icon: Icons.subscription,
     tooltip: "Music, Television, Cloud, Other",
   },
   {
+    id: 10,
+
     label: "Education",
     budget: 200,
     icon: Icons.education,
@@ -102,6 +121,8 @@ export const categories = [
   },
 
   {
+    id: 11,
+
     label: "Business expenses",
     budget: 1500,
     icon: Icons.business,
@@ -109,6 +130,8 @@ export const categories = [
   },
 
   {
+    id: 12,
+
     label: "Miscellaneous",
     budget: 500,
     icon: Icons.misc,

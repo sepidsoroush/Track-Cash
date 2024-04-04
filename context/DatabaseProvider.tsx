@@ -46,17 +46,17 @@ const DatabaseProvider: React.FC<DatabaseProviderProps> = ({ children }) => {
 
   const onSave = async (partialCategory: Partial<Category>) => {
     try {
-      const { _id } = partialCategory;
+      const { id } = partialCategory;
 
       const response = await httpCommon.put(
-        `${CATEGORY_ROUTE}/${_id}`,
+        `${CATEGORY_ROUTE}/${id}`,
         JSON.stringify(partialCategory)
       );
       const updatedCategory = response.data;
       if (updatedCategory) {
         await alerts.successAlert("Category updated with success");
         const indexUpdated = categories.findIndex(
-          (category) => category._id === partialCategory._id
+          (category) => category.id === partialCategory.id
         );
         const updatesCategories = [...categories];
         updatesCategories[indexUpdated] = updatedCategory;
@@ -82,7 +82,7 @@ const DatabaseProvider: React.FC<DatabaseProviderProps> = ({ children }) => {
     try {
       await httpCommon.delete(`${CATEGORY_ROUTE}/${id}`);
       await alerts.successAlert("Category deleted with success");
-      setCategories(categories.filter((category) => category._id !== id));
+      setCategories(categories.filter((category) => category.id !== id));
     } catch (error) {
       alerts.errorAlert((error as HttpRequestError).message || EX_SYSTEM);
     }
