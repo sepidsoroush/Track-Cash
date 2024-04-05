@@ -145,3 +145,5 @@ export const accounts = [
   },
   { accountNo: "DE84102270750900117001", accountName: "Join Account" },
 ];
+
+export const iconsList = Object.values(Icons);

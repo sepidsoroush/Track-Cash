@@ -46,7 +46,7 @@ export interface Category {
   label: string;
   budget: number;
   icon: LucideIcon;
-  tooltip: string;
+  tooltip?: string;
 }
 
 export interface Budget extends Category {
