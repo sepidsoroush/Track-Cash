@@ -1,10 +1,9 @@
 "use client";
-
+import { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
-import { useDatabaseContext } from "@/context/DatabaseContext";
 import {
   Dialog,
   DialogContent,
@@ -45,7 +44,12 @@ type Props = {
 };
 
 export function CategoryForm({ title, description, category, action }: Props) {
-  const { categories, onCreateNew, onSave } = useDatabaseContext();
+  const [newCategory, setNewCategory] = useState({
+    label: "",
+    budget: 0,
+    icon: "",
+    tooltip: "",
+  });
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -57,18 +61,37 @@ export function CategoryForm({ title, description, category, action }: Props) {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     // console.log(values);
-    if (action === "create") {
-      onCreateNew(values);
-    } else {
-      onSave(values);
+    try {
+      const response = await fetch("/api/categories", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log("New category added:", data);
+        // Optionally, you can update the local state with the new category
+        // Reset the form fields
+        setNewCategory({
+          label: "",
+          budget: 0,
+          icon: "",
+          tooltip: "",
+        });
+      } else {
+        console.error("Failed to add new category:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error adding new category:", error);
     }
     form.reset();
   }
-  //   console.log(categories);
 
   return (
     <Dialog>

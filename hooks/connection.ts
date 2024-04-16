@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const { MONGO_URI } = process.env;
 
-export const connect = async () => {
+export const connectMongoDB = async () => {
   const conn = await mongoose
     .connect(MONGO_URI as string)
     .catch((err) => console.log(err));

@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { connect } from "@/hooks/connection";
+import { connectMongoDB } from "@/hooks/connection";
 import { ResponseFuncs } from "@/types";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -13,12 +13,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const handleCase: ResponseFuncs = {
     // RESPONSE FOR GET REQUESTS
     GET: async (req: NextApiRequest, res: NextApiResponse) => {
-      const { Category } = await connect(); // connect to database
+      const { Category } = await connectMongoDB(); // connect to database
       res.json(await Category.find({}).catch(catcher));
     },
     // RESPONSE POST REQUESTS
     POST: async (req: NextApiRequest, res: NextApiResponse) => {
-      const { Category } = await connect(); // connect to database
+      const { Category } = await connectMongoDB(); // connect to database
       res.json(await Category.create(req.body).catch(catcher));
     },
   };
