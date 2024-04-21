@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { Icons } from "@/components/common/icons";
 
 import { NavItem } from "@/types";
+import { Badge } from "../ui/badge";
 
 const items: NavItem[] = [
   {
@@ -28,11 +29,13 @@ const items: NavItem[] = [
   {
     title: "Investments",
     href: "/dashboard/investments",
+    disabled: true,
     icon: Icons.investments,
   },
   {
     title: "Categories",
     href: "/dashboard/categories",
+    disabled: true,
     icon: Icons.categories,
   },
   {
@@ -61,10 +64,14 @@ export function Sidebar() {
     <nav className="grid items-start gap-2">
       {items.map((item, index) => {
         return (
-          <Link key={index} href={item.disabled ? "#" : item.href}>
-            <span
+          <Link
+            key={index}
+            href={item.disabled ? "#" : item.href}
+            className="flex flex-row justify-between items-center"
+          >
+            <div
               className={cn(
-                "group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
+                "group flex items-center rounded-md py-2 px-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground",
                 path === item.href ? "bg-accent" : "transparent",
                 item.disabled && "cursor-not-allowed opacity-80",
                 isSmallScreen ? "mx-1" : "mx-2"
@@ -76,7 +83,16 @@ export function Sidebar() {
                 />
               )}{" "}
               <span>{isSmallScreen ? null : item.title}</span>
-            </span>
+            </div>
+            {item.disabled ? (
+              <Badge
+                variant="secondary"
+                id="soon"
+                className="hidden md:inline-block"
+              >
+                soon
+              </Badge>
+            ) : null}
           </Link>
         );
       })}

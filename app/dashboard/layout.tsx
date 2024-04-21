@@ -14,7 +14,7 @@ export default function DashboardLayout({
       <div className="flex min-h-screen flex-col">
         <Navbar />
         <div className="flex flex-1">
-          <aside className="w-12 md:w-[200px] flex-col flex border-r bg-background/60 backdrop-blur-xl transition-all py-2">
+          <aside className=" md:w-[220px] flex-col flex border-r bg-background/60 backdrop-blur-xl transition-all py-2 px-0 md:px-2">
             <Sidebar />
           </aside>
           <main className="flex w-full flex-1 flex-col overflow-hidden">
