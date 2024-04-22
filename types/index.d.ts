@@ -42,10 +42,10 @@ export interface BudgetStats {
 }
 
 export interface Category {
-  id: number;
+  _id: number;
   label: string;
   budget: number;
-  icon: LucideIcon;
+  icon?: LucideIcon;
   tooltip?: string;
 }
 

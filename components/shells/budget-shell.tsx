@@ -26,7 +26,7 @@ export default function BudgetShell() {
       annuallyExpenses.find((item) => item.name === budget.label)?.value || 0;
 
     return {
-      id: budget.id,
+      _id: budget.id,
       label: budget.label,
       budget: budget.budget,
       spent: spent,

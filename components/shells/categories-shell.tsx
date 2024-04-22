@@ -1,36 +1,36 @@
-"use client";
-
 import { Separator } from "@/components/ui/separator";
 import { CategoriesTable } from "@/components/reports/categories/categories-table";
 import { ManageCategory } from "@/components/filters/manage-category";
 import { Category } from "@/types";
+import { CATEGORY_ROUTE } from "@/lib/routes";
 
-interface IndexProps {
-  categories: Array<Category>;
-}
+const getData = async () => {
+  try {
+    const res = await fetch(`${process.env.API_URL}${CATEGORY_ROUTE}`, {
+      cache: "no-store",
+    });
 
-// GET PROPS FOR SERVER SIDE RENDERING
-export async function getServerSideProps() {
-  // get category data from API
-  const res = await fetch(process.env.API_URL as string);
-  const categories = await res.json();
+    if (!res.ok) {
+      throw new Error("Failed to fetch categories");
+    }
 
-  // return props
-  return {
-    props: { categories },
-  };
-}
+    return res.json();
+  } catch (error) {
+    console.log("Error loading categories: ", error);
+  }
+};
 
-export default function CategoriesShell(props: IndexProps) {
-  const { categories } = props;
-
+export default async function CategoriesShell() {
+  const categories: Category[] = await getData();
   return (
     <div className="flex min-h-screen w-full flex-col flex-wrap items-start justify-start">
-      {/* <ManageCategory />
+      <ManageCategory />
       <Separator />
-      <CategoriesTable data={categories} /> */}
+      {/* <CategoriesTable data={categories} /> */}
       {categories.map((item) => (
-        <p key={item.id}>{item.label}</p>
+        <div key={item._id}>
+          {item.label} <span>{item.tooltip}</span>
+        </div>
       ))}
     </div>
   );

@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -20,11 +19,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
+import { CATEGORY_ROUTE } from "@/lib/routes";
 import { Category } from "@/types";
 
 const formSchema = z.object({
@@ -39,53 +38,35 @@ const formSchema = z.object({
 type Props = {
   title: string;
   description: string;
-  category: Category;
-  action: string;
+  action?: string;
+  category?: Category;
 };
 
 export function CategoryForm({ title, description, category, action }: Props) {
-  const [newCategory, setNewCategory] = useState({
-    label: "",
-    budget: 0,
-    icon: "",
-    tooltip: "",
-  });
-  // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      label: category.label,
-      tooltip: category.tooltip,
-      //   icon: category.icon,
+      label: category ? category.label : "",
+      tooltip: category ? category.tooltip : "",
     },
   });
 
-  // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    // console.log(values);
     try {
-      const response = await fetch("/api/categories", {
+      const response = await fetch(`${process.env.API_URL}${CATEGORY_ROUTE}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(values),
       });
-      if (response.ok) {
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error("Error adding category:", errorData.message);
+      } else {
         const data = await response.json();
         console.log("New category added:", data);
-        // Optionally, you can update the local state with the new category
-        // Reset the form fields
-        setNewCategory({
-          label: "",
-          budget: 0,
-          icon: "",
-          tooltip: "",
-        });
-      } else {
-        console.error("Failed to add new category:", response.statusText);
       }
     } catch (error) {
       console.error("Error adding new category:", error);

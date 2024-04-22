@@ -9,7 +9,7 @@ export const connectMongoDB = async () => {
   console.log("Mongoose Connection Established");
 
   const CategorySchema = new mongoose.Schema({
-    label: String,
+    label: { type: String, required: true },
     budget: Number,
     icon: String,
     tooltip: String,

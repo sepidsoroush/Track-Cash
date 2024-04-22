@@ -10,7 +10,7 @@ export async function GET(res: NextApiResponse) {
 
 export async function POST(req: NextApiRequest, res: NextApiResponse) {
   const catcher = (error: Error) => res.status(400).json({ error });
-  const { Category } = await connectMongoDB(); // connect to database
+  const { Category } = await connectMongoDB();
 
   return Response.json(await Category.create(req.body).catch(catcher));
 }
