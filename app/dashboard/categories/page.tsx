@@ -13,7 +13,7 @@ const getData = async () => {
       cache: "no-store",
     });
 
-    console.log(res);
+    // console.log(res);
 
     if (!res.ok) {
       throw new Error("Failed to fetch categories");
@@ -37,12 +37,11 @@ export default async function DashboardPage() {
     <div className="flex min-h-screen w-full flex-col flex-wrap items-start justify-start">
       <ManageCategory />
       <div>
-        <p>No results to display</p>
-        {/* {categories ? (
+        {categories ? (
           categories.map((item) => <p key={item.id}>{item.label}</p>)
         ) : (
           <p>No results to display</p>
-        )} */}
+        )}
       </div>
     </div>
   );

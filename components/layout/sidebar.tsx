@@ -35,7 +35,7 @@ const items: NavItem[] = [
   {
     title: "Categories",
     href: "/dashboard/categories",
-    disabled: true,
+    disabled: false,
     icon: Icons.categories,
   },
   {

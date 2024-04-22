@@ -1,32 +1,16 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { connectMongoDB } from "@/hooks/connection";
-import { ResponseFuncs } from "@/types";
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  //capture request method, we type it as a key of ResponseFunc to reduce typing later
-  const method: keyof ResponseFuncs = req.method as keyof ResponseFuncs;
-
-  //function for catch errors
+export async function GET(res: NextApiResponse) {
+  const { Category } = await connectMongoDB();
   const catcher = (error: Error) => res.status(400).json({ error });
 
-  // Potential Responses
-  const handleCase: ResponseFuncs = {
-    // RESPONSE FOR GET REQUESTS
-    GET: async (req: NextApiRequest, res: NextApiResponse) => {
-      const { Category } = await connectMongoDB(); // connect to database
-      res.json(await Category.find({}).catch(catcher));
-    },
-    // RESPONSE POST REQUESTS
-    POST: async (req: NextApiRequest, res: NextApiResponse) => {
-      const { Category } = await connectMongoDB(); // connect to database
-      res.json(await Category.create(req.body).catch(catcher));
-    },
-  };
+  return Response.json(await Category.find({}).catch(catcher));
+}
 
-  // Check if there is a response for the particular method, if so invoke it, if not response with an error
-  const response = handleCase[method];
-  if (response) response(req, res);
-  else res.status(400).json({ error: "No Response for This Request" });
-};
+export async function POST(req: NextApiRequest, res: NextApiResponse) {
+  const catcher = (error: Error) => res.status(400).json({ error });
+  const { Category } = await connectMongoDB(); // connect to database
 
-export default handler;
+  return Response.json(await Category.create(req.body).catch(catcher));
+}
